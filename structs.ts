@@ -4,10 +4,8 @@ export type ICommentable = 'anime' | 'post' | 'review' | 'user' | 'blogvideo';
 
 
 export type Role = 'root' | 'admin' | 'supereditor' | 'editor' | 'chatadmin' | 'videoblogger' | 'reviewer';
-//export 
-const isOfTypeRole = (keyInput: string): keyInput is Role => {
-    return ['root', 'admin', 'supereditor', 'editor', 'chatadmin', 'videoblogger', 'reviewer'].includes(keyInput);
-}
+
+//export
 
 export interface SkipTimeJson {
     time: number;
@@ -599,7 +597,7 @@ export interface IReviewJson {
 }
 
 export interface IOneAppJsonSmall {
-    description: any;
+    description: unknown;
     name: string;
     app_id: number
     created_at: number
@@ -630,3 +628,16 @@ export interface IPostJson {
 }
 
 
+export interface OneGenre {
+    title: string,
+    href: string,
+    value: number,
+    more_titles: string[],
+    group_id: number
+
+}
+
+export interface OneGenreGroup {
+    title: string,
+    id: number
+}
