@@ -38,6 +38,7 @@ export interface IFeedVideoJson extends IAnimeJson {
     ep_title: string;
     player_title: string;
     dub_title: string;
+    video_id: number;
 }
 
 export interface IViewingOrderJson {
