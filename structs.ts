@@ -293,9 +293,7 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
 export interface IListStatus {
     title: string;
     href: string;
-    class: string;
     id: 0 | 1 | 2 | 3 | 5 | 4;
-    icon: string;
 }
 
 export interface IAnimeVideoPreview extends IAnimeJson {
@@ -343,8 +341,17 @@ export interface MainPageJson {
         items: IAnimeJson[];
     },
     'new': IAnimeJson[];
+    last_watches: ILastWatchJson[];
 
 }
+
+export interface ILastWatchJson extends IAnimeJson {
+    date: number;
+    end_time: number;
+    ep_title: string;
+    video_id: number;
+}
+
 
 export interface IGenreJson {
     title: string;

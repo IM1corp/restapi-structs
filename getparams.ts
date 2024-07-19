@@ -9,7 +9,7 @@ export interface FilterAnimeGetParams {
     season?: StringOrArray<'winter' | 'spring' | 'summer' | 'autumn' | 'fall' | '4' | '3' | '2' | '1'>;
     from_year?: string;
     to_year?: string;
-    need_videos?: "1" | '0';
+    need_videos?: "1"|'0';
 
     ep_from?: string;
     ep_to?: string;
@@ -91,7 +91,7 @@ export interface GetReviewsQueryMany {
     type: 'approved' | 'declined' | 'waiting'
 }
 
-export interface IStatisticParam {
+export interface IStatisticParam{
     //node-id
     [k: number]: {
         //date     : percent
