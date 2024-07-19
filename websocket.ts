@@ -1,4 +1,4 @@
-import {IMessageEditionWriteJson, INotificationJson, IOneMessageJson} from "./database";
+import {INotificationJson, IOneMessageJson} from "./database";
 
 export type ClientEventTypes = 'message-read'|'new-message'|'notification'|'error'|'statistics' | 'message-deleted' | 'message-edited';
 export type ServerEventTypes = 'read-messages'|'chat-subscribe'|'subscribe-events'|'unsubscribe-events';
@@ -6,7 +6,7 @@ export type ServerEventTypes = 'read-messages'|'chat-subscribe'|'subscribe-event
 //client
 export interface ClientEvent{
     event: ClientEventTypes;
-    [k: string]: any;
+    [k: string]: unknown;
 }
 export interface ErrorEvent extends ClientEvent{
     event: 'error';
