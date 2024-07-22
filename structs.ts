@@ -637,11 +637,12 @@ export interface IPostJsonSmall{
     category: { title: string, id: number, uri: string };
     created_at: number;
     user: IUserJsonNicknameAndAva;
+    content_preview: string;
+    preview_image: string | null;
 }
 
-export interface IPostJson extends IPostJsonSmall{
+export interface IPostJson extends Omit<IPostJsonSmall, 'content_preview'>{
     edited_at: number;
-    preview_image: string | null;
     content: string;
 }
 
