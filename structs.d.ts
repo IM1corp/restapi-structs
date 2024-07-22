@@ -1,17 +1,11 @@
-export type IFriendStatus = 'friends' | 'requests' | 'followers' | 'sent-requests' | 'following';//"friends"|'requests'|'followers';
+﻿export type IFriendStatus = 'friends' | 'requests' | 'followers' | 'sent-requests' | 'following';
 export type VideoCategoryType = 'top' | 'review' | 'amv' | 'news' | 'other';
 export type ICommentable = 'anime' | 'post' | 'review' | 'user' | 'blogvideo';
-
-
 export type Role = 'root' | 'admin' | 'supereditor' | 'editor' | 'chatadmin' | 'videoblogger' | 'reviewer';
-
-//export
-
 export interface SkipTimeJson {
     time: number;
-    length: number
+    length: number;
 }
-
 export interface IOneVideoJson {
     video_id: number;
     number: string;
@@ -24,15 +18,14 @@ export interface IOneVideoJson {
     index: number;
     skips: {
         opening: SkipTimeJson | null;
-        ending: SkipTimeJson | null
-    }
+        ending: SkipTimeJson | null;
+    };
     watched?: {
         end_time: number;
         date: number;
-    }
+    };
     subscribed?: boolean;
 }
-
 export interface IFeedVideoJson extends IAnimeJson {
     date: number;
     ep_title: string;
@@ -40,7 +33,6 @@ export interface IFeedVideoJson extends IAnimeJson {
     dub_title: string;
     video_id: number;
 }
-
 export interface IViewingOrderJson {
     title: string;
     anime_status: IAnimeStatus;
@@ -48,40 +40,24 @@ export interface IViewingOrderJson {
     year: number;
     type: IAnimeType;
     poster: PosterJson;
-    // Viewing order properties
     anime_id: number;
     data: {
         text: string;
         id: number;
         index: number;
-    },
-    description: string,
-    user: { list: number | null }
+    };
+    description: string;
+    user: {
+        list: number | null;
+    };
 }
-
 export interface PosterJson {
-    /**
-     * Small poster - 33x47px
-     */
     small: string;
-    /**
-     * Medium poster - 184x260px
-     */
     medium: string;
-    /**
-     * Big poster - 250x350px
-     */
     big: string;
-    /**
-     * Poster with responsive size
-     */
     fullsize: string;
-    /**
-     * Huge poster - 400x560
-     */
     huge: string;
 }
-
 export interface IAnimeFavoriteJson extends Omit<IAnimeJson, "description"> {
     type: IAnimeType;
     date: number;
@@ -92,10 +68,9 @@ export interface IAnimeFavoriteJson extends Omit<IAnimeJson, "description"> {
     anime_status: IAnimeStatus;
     next_episode?: number;
 }
-
 export interface ICommentJson {
     user_id: number;
-    roles: Role[]
+    roles: Role[];
     deleted_at: number;
     name: string;
     id: number;
@@ -107,14 +82,12 @@ export interface ICommentJson {
     vote?: number;
     children_count: number;
     parent_id?: number;
-    /**In profile comments - data about comment element*/
     item_data?: {
         posters?: PosterJson;
         title?: string;
         url?: string;
     };
 }
-
 export interface ICommentJsonComplaint extends ICommentJson {
     reason: {
         title: string;
@@ -123,23 +96,20 @@ export interface ICommentJsonComplaint extends ICommentJson {
     from_user: {
         id: number;
     };
-    /**Complain comment object data*/
     item_data_complain: {
         posters?: PosterJson;
         title?: string;
         url?: string;
     };
 }
-
 export interface OtherIdsJson {
     vk?: number;
     tg_nickname?: string;
     shikimori?: {
         nickname: string;
         id: number;
-    }
+    };
 }
-
 export interface IUserJson {
     id: number;
     ids: OtherIdsJson;
@@ -158,20 +128,18 @@ export interface IUserJson {
         color: number;
     };
 }
-
 export interface IProfileJson extends IUserJson {
     notifications: {
         vk: boolean;
         telegram: boolean;
-    }
+    };
     lists_privacy: 'public' | 'friends' | 'authed' | 'none';
     privacy: {
         vk_public: boolean;
         tg_public: boolean;
         shiki_public: boolean;
-    }
+    };
 }
-
 export interface IFriendJson {
     id: number;
     banned: boolean;
@@ -182,27 +150,26 @@ export interface IFriendJson {
     roles: Role[];
     list: IFriendStatus;
     ids: OtherIdsJson;
-
 }
-
 export interface VideoBodyJson {
     has_spoiler: boolean;
     title: string;
-    descriptions: { small: string; full: string }
+    descriptions: {
+        small: string;
+        full: string;
+    };
     iframe: string;
     anime_ids: VideoAnimeBodyJson[];
     category: VideoCategoryType;
     previews: {
         small: string;
         big: string;
-    }
+    };
 }
-
 export interface VideoAnimeBodyJson {
     id: number;
     timing: number;
 }
-
 export interface ITrailerJson {
     trailer_id: number;
     anime_id: number;
@@ -211,7 +178,6 @@ export interface ITrailerJson {
     player: string;
     number: string;
 }
-
 export interface IAnimeJson {
     do_not_recommend?: boolean;
     anime_id: number;
@@ -220,57 +186,50 @@ export interface IAnimeJson {
     title: string;
     description: string;
 }
-export interface IScheduleAnime extends IAnimeJson{
-    episodes: IOneAnimeJson['episodes'];
-}
-
 export interface IOneAnimeSmallJson extends IAnimeJson {
     year: number;
     anime_status: IAnimeStatus;
     season: number;
-    min_age: { value: number, title: string | null; };
+    min_age: {
+        value: number;
+        title: string | null;
+    };
     user?: IUserAnimeInfo;
     type: IAnimeType;
     views: number;
     rating?: {
         counters: number;
         average: number;
-    }
+    };
 }
-
 export interface IMessageEditionWriteJson {
-    message_edition_write_id: number,
-    edited_by_id: number,
-    reason_edit: string,
-    new_text: string,
-    message_id: number,
-    date: number,
+    message_edition_write_id: number;
+    edited_by_id: number;
+    reason_edit: string;
+    new_text: string;
+    message_id: number;
+    date: number;
 }
-
-
 export interface IMessageDeletionWriteJson {
-    message_deletion_write_id: number,
-    message_id: number,
-    delete_by_id: number,
-    date: number,
-    deleted: boolean,
-    reason_deletion: boolean
+    message_deletion_write_id: number;
+    message_id: number;
+    delete_by_id: number;
+    date: number;
+    deleted: boolean;
+    reason_deletion: boolean;
 }
-
 export interface IOneAnimeJson extends IOneAnimeSmallJson {
     original: string;
     other_titles: string[];
     rating?: {
         counters: number;
         average: number;
-
-
         worldart_rating?: number;
         shikimori_rating?: number;
         kp_rating?: number;
         myanimelist_rating?: number;
         anidub_rating?: number;
-    },
+    };
     remote_ids: {
         worldart_id: number;
         worldart_type?: 'animation' | 'cinema';
@@ -285,59 +244,49 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
     studios: IStudioJson[];
     videos?: IOneVideoJson[];
     genres: IGenreJson[];
-    viewing_order: IViewingOrderJson[],
+    viewing_order: IViewingOrderJson[];
     translates: ITranslate[];
     blocked_in: string[];
     episodes: {
         aired: number;
         count: number;
-        next_date: number|null
-    }
+        next_date: number | null;
+    };
 }
-
-
-
 export interface IListStatus {
     title: string;
     href: string;
     id: 0 | 1 | 2 | 3 | 5 | 4;
 }
-
 export interface IAnimeVideoPreview extends IAnimeJson {
     time?: number;
     type: IAnimeType;
     year: number;
     anime_status: IAnimeStatus;
 }
-
 export interface IAnimeType {
     value: number;
     name: string;
     shortname: string;
 }
-
 export interface IAnimeStatus {
     value: number;
     alias: 'released' | 'ongoing' | 'announcement' | 'Unknown';
     title: string;
     class: string;
 }
-
 export interface ITranslate {
     value: number;
     title: string;
     href: string;
 }
-
 export interface IUserAnimeInfo {
     rating: number;
     list: {
         is_fav: boolean;
-        // value:  0|1|2|3|-1|5;
-        list: IListStatus | null
-    }
+        list: IListStatus | null;
+    };
 }
-
 export interface MainPageJson {
     announcements: IAnimeJson[];
     recommends: IAnimeJson[];
@@ -346,61 +295,42 @@ export interface MainPageJson {
         season: number;
         year: number;
         items: IAnimeJson[];
-    },
+    };
     'new': IAnimeJson[];
     last_watches: ILastWatchJson[];
-    schedule: IScheduleAnime[];
-
+    schedule: IAnimeJson[];
 }
-
 export interface ILastWatchJson extends IAnimeJson {
     date: number;
     end_time: number;
     ep_title: string;
     video_id: number;
 }
-
-
 export interface IGenreJson {
     title: string;
     url: string;
     id: number;
     alias: string;
 }
-
 export interface AvatarJson {
-    /**
-     * Image size with 90x90px
-     */
     small: string;
-    /**
-     * Image size with 200x200px
-     */
     big: string;
-    /**
-     * Image size with 250x250px
-     */
     full: string;
 }
-
 export interface AnimeRatingsJson {
     rating: number;
-    count: number
+    count: number;
 }
-
 interface IUrl {
     url: string;
-    title: string
+    title: string;
 }
-
 export interface ICreatorJson extends IUrl {
     id: number;
 }
-
 export interface IStudioJson extends IUrl {
     id: number;
 }
-
 export interface IBanJson {
     moderator: {
         id: number;
@@ -413,50 +343,46 @@ export interface IBanJson {
         reason: string | null;
         active: boolean;
         is_unban: boolean;
-    }
+    };
 }
-
 export interface IOneMessageDialogJson {
     last_message: string;
-    roles: Role[]
+    roles: Role[];
     unread_count: number;
     nickname: string;
     avatars: AvatarJson;
     user_id: number;
     banned: boolean;
 }
-
 export interface IMessageHistory {
-    avatars: AvatarJson,
-    new_text: string | undefined,
-    nickname: string,
-    date: number,
-    old_text: string,
-    user_id: number,
-    change_type: "edit" | "restore" | "delete" | "add"
+    avatars: AvatarJson;
+    new_text: string | undefined;
+    nickname: string;
+    date: number;
+    old_text: string;
+    user_id: number;
+    change_type: "edit" | "restore" | "delete" | "add";
 }
-
 export interface IClaimedMessageJson {
-    message_id: number,
-    user_id: number,
-    reason: number,
-    date_complaints: number,
-    is_closed: boolean,
-    avatars: AvatarJson,
-    nickname: string,
+    message_id: number;
+    user_id: number;
+    reason: number;
+    date_complaints: number;
+    is_closed: boolean;
+    avatars: AvatarJson;
+    nickname: string;
     message: {
         text: string;
         is_chat: boolean;
         owner: {
             nickname: string;
             id: number;
-        }
-    }
-    status_complaints: MessageStatusComplaints,
-    claim_id: number,
-    is_last: boolean
+        };
+    };
+    status_complaints: MessageStatusComplaints;
+    claim_id: number;
+    is_last: boolean;
 }
-
 export interface IOneMessageJson {
     id: number;
     to_id: number;
@@ -479,49 +405,42 @@ export interface IOneMessageJson {
         id: number;
     } | null;
 }
-
 export interface IMessageChangeBase {
-    NickName: string,
-    Date: Date,
-    OldText: string,
-    UserId: number,
-    AvaVersion: number
-
+    NickName: string;
+    Date: Date;
+    OldText: string;
+    UserId: number;
+    AvaVersion: number;
 }
-
 export interface IEditionWrite extends IMessageChangeBase {
-    NewText: string
+    NewText: string;
 }
-
 export interface IDeletionWrite extends IMessageChangeBase {
-    Deleted: boolean
+    Deleted: boolean;
 }
-
 export interface IClaimedMessages {
-    MessageComplaintsId: number,
-    MessageId: number,
-    UserId: number,
-    Reason: number,
-    DateComplaints: Date,
-    IsClosed: boolean,
-    AvaVersion: number,
-    NickName: string,
-    Message: string,
-    IsChat: boolean,
-    MessageOwnerNickName: string,
-    MessageOwnerUserId: number,
-    StatusComplaints: MessageStatusComplaints,
-    IsLast: boolean
+    MessageComplaintsId: number;
+    MessageId: number;
+    UserId: number;
+    Reason: number;
+    DateComplaints: Date;
+    IsClosed: boolean;
+    AvaVersion: number;
+    NickName: string;
+    Message: string;
+    IsChat: boolean;
+    MessageOwnerNickName: string;
+    MessageOwnerUserId: number;
+    StatusComplaints: MessageStatusComplaints;
+    IsLast: boolean;
 }
-
-export enum MessageStatusComplaints {
+export declare enum MessageStatusComplaints {
     Add = 0,
     Reject = 1,
     Approved = 2,
     Resotred = 3,
     Argue = 4
 }
-
 export interface INotificationJson {
     id: number;
     text_html: string;
@@ -529,24 +448,13 @@ export interface INotificationJson {
     date: number;
     click_uri: string;
 }
-
-export type NotificationType =
-    'news'
-    | 'edit'
-    | 'message'
-    | 'comment'
-    | 'animeupdate'
-    | 'review'
-    | 'friend'
-    | 'viewingorderupdate';
-
+export type NotificationType = 'news' | 'edit' | 'message' | 'comment' | 'animeupdate' | 'review' | 'friend' | 'viewingorderupdate';
 export interface INotificationFULL extends INotificationJson {
     deleted: boolean;
     viewed: boolean;
     sub_id: number;
     type: NotificationType;
 }
-
 export interface IBloggerVideoAnimeJson {
     has_spoiler: boolean;
     publish_date: number;
@@ -560,7 +468,7 @@ export interface IBloggerVideoAnimeJson {
     descriptions: {
         small: string;
         big: string;
-    }
+    };
     id: number;
     category: {
         id: VideoCategoryType;
@@ -570,10 +478,9 @@ export interface IBloggerVideoAnimeJson {
     previews: {
         small: string;
         big: string;
-    }
+    };
     iframe_url: string;
 }
-
 export interface RegisterFormData {
     email: string;
     password: string;
@@ -583,7 +490,6 @@ export interface RegisterFormData {
     hash?: string;
     shiki?: string;
 }
-
 export interface IReviewJson {
     review_id: number;
     update_date: number;
@@ -597,40 +503,33 @@ export interface IReviewJson {
     rating?: {
         average?: number;
         category?: Array<{
-            category: string,
-            average: number
+            category: string;
+            average: number;
         }>;
-    }
+    };
     total_likes: number;
     check_comment?: string;
     views: number;
-
-
-    avatar: IUserJson['avatars']
-    nickname: IUserJson['nickname']
-    user_roles: IUserJson['roles']
+    avatar: IUserJson['avatars'];
+    nickname: IUserJson['nickname'];
+    user_roles: IUserJson['roles'];
 }
-
 export interface IOneAppJsonSmall {
     description: string;
     name: string;
-    app_id: number
-    created_at: number
+    app_id: number;
+    created_at: number;
     owner: IUserJsonNicknameAndAva;
 }
-
 export interface IOneAppJson extends IOneAppJsonSmall {
     public_token: string;
     private_access_token: string;
 }
-
 export interface IUserJsonNicknameAndAva {
     id: number;
     nickname: string;
     avatars: AvatarJson;
 }
-
-
 export interface IPostJson {
     id: number;
     preview_image: string | null;
@@ -639,20 +538,21 @@ export interface IPostJson {
     created_at: number;
     edited_at: number;
     content: string;
-    category: { title: string, id: number, uri: string };
+    category: {
+        title: string;
+        id: number;
+        uri: string;
+    };
 }
-
-
 export interface OneGenre {
-    title: string,
-    href: string,
-    value: number,
-    more_titles: string[],
-    group_id: number
-
+    title: string;
+    href: string;
+    value: number;
+    more_titles: string[];
+    group_id: number;
 }
-
 export interface OneGenreGroup {
-    title: string,
-    id: number
+    title: string;
+    id: number;
 }
+export {};
