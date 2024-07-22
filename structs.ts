@@ -220,7 +220,7 @@ export interface IAnimeJson {
     title: string;
     description: string;
 }
-export interface IScheduleAnime extends IAnimeJson{
+export interface IScheduleAnimeJson extends IAnimeJson{
     episodes: IOneAnimeJson['episodes'];
 }
 
@@ -349,7 +349,8 @@ export interface MainPageJson {
     },
     'new': IAnimeJson[];
     last_watches: ILastWatchJson[];
-    schedule: IScheduleAnime[];
+    schedule: IScheduleAnimeJson[];
+    posts: IPostJsonSmall[]
 
 }
 
@@ -630,16 +631,18 @@ export interface IUserJsonNicknameAndAva {
     avatars: AvatarJson;
 }
 
-
-export interface IPostJson {
+export interface IPostJsonSmall{
     id: number;
-    preview_image: string | null;
-    user: IUserJsonNicknameAndAva;
     title: string;
-    created_at: number;
-    edited_at: number;
-    content: string;
     category: { title: string, id: number, uri: string };
+    created_at: number;
+    user: IUserJsonNicknameAndAva;
+}
+
+export interface IPostJson extends IPostJsonSmall{
+    edited_at: number;
+    preview_image: string | null;
+    content: string;
 }
 
 
