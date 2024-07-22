@@ -609,7 +609,7 @@ export interface IReviewJson {
 }
 
 export interface IOneAppJsonSmall {
-    description: unknown;
+    description: string;
     name: string;
     app_id: number
     created_at: number
