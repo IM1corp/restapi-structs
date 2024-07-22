@@ -288,8 +288,11 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
     episodes: {
         aired: number;
         count: number;
+        next_date: number|null
     }
 }
+
+
 
 export interface IListStatus {
     title: string;
@@ -343,6 +346,7 @@ export interface MainPageJson {
     },
     'new': IAnimeJson[];
     last_watches: ILastWatchJson[];
+    schedule: IAnimeJson[];
 
 }
 
