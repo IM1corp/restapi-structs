@@ -350,7 +350,10 @@ export interface MainPageJson {
     'new': IAnimeJson[];
     last_watches: ILastWatchJson[];
     schedule: IScheduleAnimeJson[];
-    posts: IPostJsonSmall[]
+    posts: {
+        items: IPostJsonSmall[];
+        types: ({id: number, title: string, uri: string})[]
+    }
 
 }
 
