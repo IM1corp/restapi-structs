@@ -1,5 +1,5 @@
 export type IFriendStatus = 'friends' | 'requests' | 'followers' | 'sent-requests' | 'following';//"friends"|'requests'|'followers';
-export type VideoCategoryType = 'top' | 'review' | 'amv' | 'news' | 'other';
+export type VideoCategoryType = 'top' | 'review' | 'amv' | 'news' | 'other' | 'quiz';
 export type ICommentable = 'anime' | 'post' | 'review' | 'user' | 'blogvideo';
 
 
@@ -359,7 +359,10 @@ export interface MainPageJson {
             count: number;
             items: IUserJsonNicknameAndAva[],
         },
-        videos: IBloggerVideoAnimeJson[],
+        videos: {
+            items: IBloggerVideoAnimeJson[],
+            categories: VideoCategoryJson[]
+        },
     }
 
 }
@@ -558,6 +561,11 @@ export interface INotificationFULL extends INotificationJson {
     type: NotificationType;
 }
 
+export interface VideoCategoryJson {
+    title: string;
+    id: VideoCategoryType;
+}
+
 export interface IBloggerVideoAnimeJson {
     has_spoiler: boolean;
     publish_date: number;
@@ -573,10 +581,7 @@ export interface IBloggerVideoAnimeJson {
         big: string;
     }
     id: number;
-    category: {
-        id: VideoCategoryType;
-        title: string;
-    };
+    category: VideoCategoryJson;
     comments_count: number;
     previews: {
         small: string;
