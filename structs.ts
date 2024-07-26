@@ -220,7 +220,8 @@ export interface IAnimeJson {
     title: string;
     description: string;
 }
-export interface IScheduleAnimeJson extends IAnimeJson{
+
+export interface IScheduleAnimeJson extends IAnimeJson {
     episodes: IOneAnimeJson['episodes'];
 }
 
@@ -291,10 +292,9 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
     episodes: {
         aired: number;
         count: number;
-        next_date: number|null
+        next_date: number | null
     }
 }
-
 
 
 export interface IListStatus {
@@ -352,9 +352,15 @@ export interface MainPageJson {
     schedule: IScheduleAnimeJson[];
     posts: {
         items: IPostJsonSmall[];
-        types: ({id: number, title: string, uri: string})[]
+        types: ({ id: number, title: string, uri: string })[]
     }
-    blogger_videos: IBloggerVideoAnimeJson[]
+    blogger: {
+        people: {
+            count: number;
+            items: IUserJsonNicknameAndAva[],
+        },
+        videos: IBloggerVideoAnimeJson[],
+    }
 
 }
 
@@ -635,7 +641,7 @@ export interface IUserJsonNicknameAndAva {
     avatars: AvatarJson;
 }
 
-export interface IPostJsonSmall{
+export interface IPostJsonSmall {
     id: number;
     title: string;
     category: { title: string, id: number, uri: string };
@@ -645,7 +651,7 @@ export interface IPostJsonSmall{
     preview_image: string | null;
 }
 
-export interface IPostJson extends Omit<IPostJsonSmall, 'content_preview'>{
+export interface IPostJson extends Omit<IPostJsonSmall, 'content_preview'> {
     edited_at: number;
     content: string;
 }
