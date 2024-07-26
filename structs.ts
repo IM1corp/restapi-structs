@@ -354,6 +354,7 @@ export interface MainPageJson {
         items: IPostJsonSmall[];
         types: ({id: number, title: string, uri: string})[]
     }
+    blogger_videos: IBloggerVideoAnimeJson[]
 
 }
 
@@ -554,7 +555,7 @@ export interface INotificationFULL extends INotificationJson {
 export interface IBloggerVideoAnimeJson {
     has_spoiler: boolean;
     publish_date: number;
-    time: number;
+    time?: number;
     creator: {
         avatars: AvatarJson;
         nickname: string;
