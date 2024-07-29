@@ -661,6 +661,19 @@ export interface IPostJson extends Omit<IPostJsonSmall, 'content_preview'> {
     content: string;
 }
 
+export interface IEditJson {
+    edit_id: number;
+    creator: IUserJsonNicknameAndAva;
+    edits_count: number;
+    date: number;
+    who_voted: {
+        likes: IUserJsonNicknameAndAva[];
+        dislikes: IUserJsonNicknameAndAva[];
+    },
+    status: 'open' | 'applied' | 'declined';
+    anime: { anime_id: number; anime_uri: string; title: string; poster: PosterJson; };
+}
+
 
 export interface OneGenre {
     title: string,
