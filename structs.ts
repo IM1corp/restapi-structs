@@ -229,7 +229,7 @@ export interface IOneAnimeSmallJson extends IAnimeJson {
     year: number;
     anime_status: IAnimeStatus;
     season: number;
-    min_age: { value: number, title: string | null; };
+    min_age: { value: number, title: string | null; titleLong: string | null };
     user?: IUserAnimeInfo;
     type: IAnimeType;
     views: number;
