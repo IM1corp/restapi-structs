@@ -261,6 +261,8 @@ export interface IMessageDeletionWriteJson {
 
 export interface IOneAnimeJson extends IOneAnimeSmallJson {
     original: string;
+    comments_count: number;
+    reviews_count: number;
     other_titles: string[];
     rating?: {
         counters: number;
