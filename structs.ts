@@ -43,6 +43,7 @@ export interface IFeedVideoJson extends IAnimeJson {
 
 export interface IViewingOrderJson {
     title: string;
+    rating?: number;
     anime_status: IAnimeStatus;
     anime_url: string;
     year: number;
@@ -221,7 +222,7 @@ export interface IAnimeJson {
     description: string;
 }
 
-export interface IScheduleAnimeJson extends IAnimeJson {
+export interface            IScheduleAnimeJson extends IAnimeJson {
     episodes: IOneAnimeJson['episodes'];
 }
 
