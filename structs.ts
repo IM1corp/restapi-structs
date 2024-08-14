@@ -57,7 +57,7 @@ export interface IViewingOrderJson {
         index: number;
     },
     description: string,
-    user: { list: number | null }
+    user?: IUserAnimeInfo;
 }
 
 export interface PosterJson {
@@ -222,7 +222,7 @@ export interface IAnimeJson {
     description: string;
 }
 
-export interface            IScheduleAnimeJson extends IAnimeJson {
+export interface IScheduleAnimeJson extends IAnimeJson {
     episodes: IOneAnimeJson['episodes'];
 }
 
