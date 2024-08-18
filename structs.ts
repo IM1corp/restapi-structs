@@ -250,6 +250,17 @@ export interface IMessageEditionWriteJson {
 }
 
 
+export type IOneGenreCatalog = {
+    genres: ({
+        title: string,
+        href: string,
+        value: number,
+        more_titles: string[],
+        group_id: number
+    })[], groups: ({ title: string, id: number })[]
+};
+
+
 export interface IMessageDeletionWriteJson {
     message_deletion_write_id: number,
     message_id: number,
