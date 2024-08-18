@@ -259,6 +259,18 @@ export interface IMessageDeletionWriteJson {
     reason_deletion: boolean
 }
 
+export interface IScreenShotJson {
+    episode: string;
+    time: number;
+    sizes: {
+        /*250x150px*/
+        small: string;
+        /*Full HD*/
+        full: string;
+    }
+    id: number;
+}
+
 export interface IOneAnimeJson extends IOneAnimeSmallJson {
     original: string;
     comments_count: number;
@@ -297,6 +309,7 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
         count: number;
         next_date: number | null
     }
+    random_screenshots: IScreenShotJson[];
 }
 
 
