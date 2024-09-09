@@ -615,6 +615,13 @@ export interface IBloggerVideoAnimeJson {
         big: string;
     }
     iframe_url: string;
+    views: number;
+
+    likes: {
+        likes: number;
+        dislikes: number;
+        vote: 0|1|-1;
+    };
 }
 
 export interface RegisterFormData {
