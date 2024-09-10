@@ -620,7 +620,7 @@ export interface IBloggerVideoAnimeJson {
     likes: {
         likes: number;
         dislikes: number;
-        vote: 0|1|-1;
+        vote: 0 | 1 | -1;
     };
 }
 
@@ -706,6 +706,14 @@ export interface IEditJson {
     },
     status: 'open' | 'applied' | 'declined';
     anime: { anime_id: number; anime_uri: string; title: string; poster: PosterJson; };
+}
+
+export interface IBloggerJson {
+    subscriptions: number,
+    id: number,
+    nickname: string,
+    is_subscribed: boolean,
+    videos_count: number
 }
 
 
