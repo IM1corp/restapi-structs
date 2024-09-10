@@ -53,15 +53,19 @@ export interface MessageDeletedEvent extends ClientEvent {
     event: 'message-deleted',
     message: IOneMessageJson
 }
-export interface UpdateBloggerEvent extends ClientEvent {
-    event: 'update-blogger';
-    blogger_id: number;
-    data: Partial<IBloggerJson>;
+export interface MessageUpdateEvent<T> extends ClientEvent {
+    event: UpdateEvents;
+    object_id: number|string;
+    data: T;
 }
-export interface UpdateAnimeEvent extends ClientEvent {
+
+export interface UpdateBloggerEvent extends MessageUpdateEvent<Partial<IBloggerJson>> {
+    event: 'update-blogger';
+    object_id: number;
+}
+export interface UpdateAnimeEvent extends MessageUpdateEvent<Partial<IOneAnimeJson>> {
     event: 'update-anime';
-    anime_id: number;
-    data: Partial<IOneAnimeJson>;
+    object_id: number;
 }
 
 export type AllClientEvents = {
@@ -77,7 +81,7 @@ export type AllClientEvents = {
     // Add other mappings as needed
 };
 export type ClientEventTypes = keyof AllClientEvents;
-
+export type UpdateEvents = 'update-anime' | 'update-blogger';
 //server
 
 
