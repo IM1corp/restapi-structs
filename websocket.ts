@@ -1,6 +1,6 @@
-import {IBloggerJson, INotificationJson, IOneAnimeJson, IOneMessageJson} from "./database";
+import {IBloggerJson, IBloggerVideoAnimeJson, INotificationJson, IOneAnimeJson, IOneMessageJson} from "./database";
 
-export type SubscribableObjectType = 'blogger' | 'anime';
+export type SubscribableObjectType = 'blogger' | 'anime' | 'bloggervideo';
 
 interface ClientEvent{
     event: string;
@@ -59,14 +59,26 @@ export interface MessageUpdateEvent<T> extends ClientEvent {
     data: T;
 }
 
-export interface UpdateBloggerEvent extends MessageUpdateEvent<Partial<IBloggerJson>> {
+type RecursivePartial<T> = {
+    [P in keyof T]?:
+    T[P] extends (infer U)[] ? RecursivePartial<U>[] :
+        T[P] extends object | undefined ? RecursivePartial<T[P]> :
+            T[P];
+};
+
+export interface UpdateBloggerEvent extends MessageUpdateEvent<RecursivePartial<IBloggerJson>> {
     event: 'update-blogger';
     object_id: number;
 }
-export interface UpdateAnimeEvent extends MessageUpdateEvent<Partial<IOneAnimeJson>> {
+export interface UpdateAnimeEvent extends MessageUpdateEvent<RecursivePartial<IOneAnimeJson>> {
     event: 'update-anime';
     object_id: number;
 }
+export interface UpdateBloggerVideoEvent extends MessageUpdateEvent<RecursivePartial<IBloggerVideoAnimeJson>> {
+    event: 'update-bloggervideo';
+    object_id: number;
+}
+
 
 export type AllClientEvents = {
     'error': ErrorEvent;
@@ -78,10 +90,11 @@ export type AllClientEvents = {
     'message-deleted': MessageDeletedEvent;
     'update-blogger':UpdateBloggerEvent;
     'update-anime': UpdateAnimeEvent;
+    'update-bloggervideo': UpdateBloggerVideoEvent;
     // Add other mappings as needed
 };
 export type ClientEventTypes = keyof AllClientEvents;
-export type UpdateEvents = 'update-anime' | 'update-blogger';
+export type UpdateEvents = 'update-anime' | 'update-blogger'| 'update-bloggervideo';
 //server
 
 
