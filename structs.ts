@@ -708,10 +708,8 @@ export interface IEditJson {
     anime: { anime_id: number; anime_uri: string; title: string; poster: PosterJson; };
 }
 
-export interface IBloggerJson {
+export interface IBloggerJson extends IUserJsonNicknameAndAva{
     subscriptions: number,
-    id: number,
-    nickname: string,
     is_subscribed: boolean,
     videos_count: number
 }
