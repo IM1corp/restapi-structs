@@ -80,6 +80,8 @@ export interface UpdateBloggerVideoEvent extends MessageUpdateEvent<RecursivePar
 }
 
 
+
+
 export type AllClientEvents = {
     'error': ErrorEvent;
     'statistics': StatisticsUpdateEvent;
