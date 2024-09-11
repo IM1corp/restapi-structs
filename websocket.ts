@@ -53,10 +53,10 @@ export interface MessageDeletedEvent extends ClientEvent {
     event: 'message-deleted',
     message: IOneMessageJson
 }
-export interface MessageUpdateEvent<T> extends ClientEvent {
-    event: UpdateEvents;
+export interface MessageUpdateEvent<T extends UpdateEvents> extends ClientEvent {
+    event: T;
     object_id: number|string;
-    data: T;
+    data: RecursivePartial<UpdateEventsData[T]>;
 }
 
 type RecursivePartial<T> = {
@@ -66,18 +66,20 @@ type RecursivePartial<T> = {
             T[P];
 };
 
-export interface UpdateBloggerEvent extends MessageUpdateEvent<RecursivePartial<IBloggerJson>> {
-    event: 'update-blogger';
+export interface UpdateBloggerEvent extends MessageUpdateEvent<'update-blogger'> {
     object_id: number;
 }
-export interface UpdateAnimeEvent extends MessageUpdateEvent<RecursivePartial<IOneAnimeJson>> {
-    event: 'update-anime';
+export interface UpdateAnimeEvent extends MessageUpdateEvent<'update-anime'> {
     object_id: number;
 }
-export interface UpdateBloggerVideoEvent extends MessageUpdateEvent<RecursivePartial<IBloggerVideoAnimeJson>> {
-    event: 'update-bloggervideo';
+export interface UpdateBloggerVideoEvent extends MessageUpdateEvent<'update-bloggervideo'> {
     object_id: number;
 }
+export type UpdateEventsData = {
+    'update-anime': IOneAnimeJson;
+    'update-blogger': IBloggerJson;
+    'update-bloggervideo': IBloggerVideoAnimeJson;
+};
 
 
 
@@ -96,7 +98,9 @@ export type AllClientEvents = {
     // Add other mappings as needed
 };
 export type ClientEventTypes = keyof AllClientEvents;
-export type UpdateEvents = 'update-anime' | 'update-blogger'| 'update-bloggervideo';
+
+export type UpdateEvents = keyof UpdateEventsData;
+
 //server
 
 
