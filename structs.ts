@@ -410,6 +410,7 @@ export interface IGenreJson {
 }
 export interface IGenreJsonFull extends IGenreJson{
     description: string;
+    subGenres: IGenreJson[];
 }
 
 export interface AvatarJson {
