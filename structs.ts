@@ -408,6 +408,9 @@ export interface IGenreJson {
     id: number;
     alias: string;
 }
+export interface IGenreJsonFull extends IGenreJson{
+    description: string;
+}
 
 export interface AvatarJson {
     /**
