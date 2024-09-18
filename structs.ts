@@ -630,6 +630,9 @@ export interface IBloggerVideoAnimeJson {
         vote: 0 | 1 | -1;
     };
 }
+export interface IBloggerVideoFullJson extends IBloggerVideoAnimeJson {
+    animes: IOneAnimeSmallJson[];
+}
 
 export interface RegisterFormData {
     email: string;
