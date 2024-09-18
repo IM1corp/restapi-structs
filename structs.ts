@@ -623,7 +623,7 @@ export interface IBloggerVideoAnimeJson {
     }
     iframe_url: string;
     views: number;
-
+    language: AcceptedLanguageType;
     likes: {
         likes: number;
         dislikes: number;
