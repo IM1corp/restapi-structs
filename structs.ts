@@ -1,9 +1,7 @@
-
-
 export type IFriendStatus = 'friends' | 'requests' | 'followers' | 'sent-requests' | 'following';//"friends"|'requests'|'followers';
 export type VideoCategoryType = 'top' | 'review' | 'amv' | 'news' | 'other' | 'quiz';
 export type ICommentable = 'anime' | 'post' | 'review' | 'user' | 'blogvideo';
-
+type AcceptedLanguageType = 'ru' | 'en' | 'ua';
 
 export type Role = 'root' | 'admin' | 'supereditor' | 'editor' | 'chatadmin' | 'videoblogger' | 'reviewer';
 
@@ -199,7 +197,7 @@ export interface VideoBodyJson {
         small: string;
         big: string;
     }
-    language?: 'ru'|'en'|'ua';
+    language?: AcceptedLanguageType;
 }
 
 export interface VideoAnimeBodyJson {
@@ -411,7 +409,8 @@ export interface IGenreJson {
     id: number;
     alias: string;
 }
-export interface IGenreJsonFull extends IGenreJson{
+
+export interface IGenreJsonFull extends IGenreJson {
     description: string;
     subGenres: IGenreJson[];
 }
@@ -630,6 +629,7 @@ export interface IBloggerVideoAnimeJson {
         vote: 0 | 1 | -1;
     };
 }
+
 export interface IBloggerVideoFullJson extends IBloggerVideoAnimeJson {
     animes: IOneAnimeSmallJson[];
 }
