@@ -1,4 +1,4 @@
-import {AcceptedLanguageType} from "../config";
+
 
 export type IFriendStatus = 'friends' | 'requests' | 'followers' | 'sent-requests' | 'following';//"friends"|'requests'|'followers';
 export type VideoCategoryType = 'top' | 'review' | 'amv' | 'news' | 'other' | 'quiz';
@@ -199,7 +199,7 @@ export interface VideoBodyJson {
         small: string;
         big: string;
     }
-    language?: AcceptedLanguageType;
+    language?: 'ru'|'en'|'ua';
 }
 
 export interface VideoAnimeBodyJson {
