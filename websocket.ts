@@ -1,6 +1,13 @@
-import {IBloggerJson, IBloggerVideoAnimeJson, INotificationJson, IOneAnimeJson, IOneMessageJson} from "./database";
+import {
+    IBloggerJson,
+    IBloggerVideoAnimeJson,
+    IBloggerVideoFullJson,
+    INotificationJson,
+    IOneAnimeJson,
+    IOneMessageJson
+} from "./database";
 
-export type SubscribableObjectType = 'blogger' | 'anime' | 'bloggervideo';
+export type SubscribableObjectType = 'blogger' | 'anime' | 'bloggervideo' | 'collection';
 
 interface ClientEvent{
     event: string;
@@ -78,7 +85,7 @@ export interface UpdateBloggerVideoEvent extends MessageUpdateEvent<'update-blog
 export type UpdateEventsData = {
     'update-anime': IOneAnimeJson;
     'update-blogger': IBloggerJson;
-    'update-bloggervideo': IBloggerVideoAnimeJson;
+    'update-bloggervideo': IBloggerVideoFullJson;
 };
 
 

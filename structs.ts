@@ -160,6 +160,17 @@ export interface IUserJson {
     };
 }
 
+export interface ICollectionJson {
+    id: number;
+    title: string;
+    description: string;
+    owner: IUserJsonNicknameAndAva;
+    create_date: number;
+    likes: ILikesJson;
+    language: AcceptedLanguageType;
+    animes: IOneAnimeSmallJson[];
+}
+
 export interface IProfileJson extends IUserJson {
     notifications: {
         vk: boolean;
@@ -623,12 +634,15 @@ export interface IBloggerVideoAnimeJson {
     iframe_url: string;
     views: number;
     language: AcceptedLanguageType;
-    likes: {
-        likes: number;
-        dislikes: number;
-        vote: 0 | 1 | -1;
-    };
+    likes: ILikesJson;
 }
+
+export interface ILikesJson {
+    likes: number;
+    dislikes: number;
+    vote: 0 | 1 | -1;
+};
+
 
 export interface IBloggerVideoFullJson extends IBloggerVideoAnimeJson {
     animes: IOneAnimeSmallJson[];
