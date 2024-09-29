@@ -1,7 +1,7 @@
 import {
     IBloggerJson,
     // IBloggerVideoAnimeJson,
-    IBloggerVideoFullJson,
+    IBloggerVideoFullJson, ICollectionJson,
     INotificationJson,
     IOneAnimeJson,
     IOneMessageJson
@@ -9,9 +9,10 @@ import {
 
 export type SubscribableObjectType = 'blogger' | 'anime' | 'bloggervideo' | 'collection';
 
-interface ClientEvent{
+interface ClientEvent {
     event: string;
 }
+
 //client
 export interface ErrorEvent extends ClientEvent {
     event: 'error';
@@ -60,9 +61,10 @@ export interface MessageDeletedEvent extends ClientEvent {
     event: 'message-deleted',
     message: IOneMessageJson
 }
+
 export interface MessageUpdateEvent<T extends UpdateEvents> extends ClientEvent {
     event: T;
-    object_id: number|string;
+    object_id: number | string;
     data: RecursivePartial<UpdateEventsData[T]>;
 }
 
@@ -76,19 +78,25 @@ type RecursivePartial<T> = {
 export interface UpdateBloggerEvent extends MessageUpdateEvent<'update-blogger'> {
     object_id: number;
 }
+
 export interface UpdateAnimeEvent extends MessageUpdateEvent<'update-anime'> {
     object_id: number;
 }
+
 export interface UpdateBloggerVideoEvent extends MessageUpdateEvent<'update-bloggervideo'> {
     object_id: number;
 }
+
+export interface UpdateCollectionEvent extends MessageUpdateEvent<'update-collection'> {
+    object_id: number;
+}
+
 export type UpdateEventsData = {
     'update-anime': IOneAnimeJson;
     'update-blogger': IBloggerJson;
     'update-bloggervideo': IBloggerVideoFullJson;
+    'update-collection': ICollectionJson;
 };
-
-
 
 
 export type AllClientEvents = {
@@ -99,9 +107,10 @@ export type AllClientEvents = {
     'message-read': MessageReadEvent;
     'message-edited': MessageEditedEvent;
     'message-deleted': MessageDeletedEvent;
-    'update-blogger':UpdateBloggerEvent;
+    'update-blogger': UpdateBloggerEvent;
     'update-anime': UpdateAnimeEvent;
     'update-bloggervideo': UpdateBloggerVideoEvent;
+    'update-collection': UpdateCollectionEvent;
     // Add other mappings as needed
 };
 export type ClientEventTypes = keyof AllClientEvents;
