@@ -688,7 +688,7 @@ export interface IReviewJson {
     user_roles: IUserJson['roles']
 }
 export type IReviewFullJson = IReviewJson & {
-    anime: IOneAnimeSmallJson;
+    anime: IOneAnimeJson;
 }
 
 export interface IOneAppJsonSmall {
