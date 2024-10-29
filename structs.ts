@@ -252,24 +252,7 @@ export interface IOneAnimeSmallJson extends IAnimeJson {
     rating?: {
         counters: number;
         average: number;
-
-        worldart_rating?: number;
-        shikimori_rating?: number;
-        kp_rating?: number;
-        myanimelist_rating?: number;
-        anidub_rating?: number;
     }
-    remote_ids: {
-        worldart_id: number;
-        worldart_type?: 'animation' | 'cinema';
-        shikimori_id: number;
-        sr_id?: number;
-        kp_id?: number;
-        myanimelist_id?: number;
-        anilibria_alias?: string;
-        anidub_id?: number;
-    };
-
 }
 
 export interface IMessageEditionWriteJson {
@@ -330,6 +313,16 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
         myanimelist_rating?: number;
         anidub_rating?: number;
     },
+    remote_ids: {
+        worldart_id: number;
+        worldart_type?: 'animation' | 'cinema';
+        shikimori_id: number;
+        sr_id?: number;
+        kp_id?: number;
+        myanimelist_id?: number;
+        anilibria_alias?: string;
+        anidub_id?: number;
+    };
     creators: ICreatorJson[];
     studios: IStudioJson[];
     videos?: IOneVideoJson[];
