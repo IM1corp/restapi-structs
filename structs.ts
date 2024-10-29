@@ -160,6 +160,7 @@ export interface IUserJson {
     };
 }
 
+
 export interface ICollectionJson {
     id: number;
     title: string;
@@ -170,6 +171,8 @@ export interface ICollectionJson {
     language: AcceptedLanguageType;
     animes: IOneAnimeSmallJson[];
 }
+
+export type ICollectionPreview = Omit<ICollectionJson, 'animes' | 'likes'> & {likes: Omit<ILikesJson, 'vote'>};
 
 export interface IProfileJson extends IUserJson {
     notifications: {
@@ -683,6 +686,9 @@ export interface IReviewJson {
     avatar: IUserJson['avatars']
     nickname: IUserJson['nickname']
     user_roles: IUserJson['roles']
+}
+export type IReviewFullJson = IReviewJson & {
+    anime: IOneAnimeSmallJson;
 }
 
 export interface IOneAppJsonSmall {
