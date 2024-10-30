@@ -707,6 +707,7 @@ export interface IReviewJson {
 
 export type IReviewFullJson = IReviewJson & {
     anime: IOneAnimeJson;
+    reviews_count: number;
 }
 
 export interface IOneAppJsonSmall {
