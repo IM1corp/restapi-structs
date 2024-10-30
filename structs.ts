@@ -673,10 +673,8 @@ export interface IReviewJson {
     commentable: boolean;
     rating?: {
         average?: number;
-        category?: Array<{
-            category: string,
-            average: number
-        }>;
+        // title -> value
+        category: Record<string, number>;
     }
     total_likes: number;
     check_comment?: string;
