@@ -4,10 +4,10 @@ import {
     IBloggerVideoFullJson, ICollectionJson,
     INotificationJson,
     IOneAnimeJson,
-    IOneMessageJson
+    IOneMessageJson, IReviewFullJson
 } from "./database";
 
-export type SubscribableObjectType = 'blogger' | 'anime' | 'bloggervideo' | 'collection';
+export type SubscribableObjectType = 'blogger' | 'anime' | 'bloggervideo' | 'collection' | 'review';
 
 interface ClientEvent {
     event: string;
@@ -83,6 +83,10 @@ export interface UpdateAnimeEvent extends MessageUpdateEvent<'update-anime'> {
     object_id: number;
 }
 
+export interface UpdateReviewEvent extends MessageUpdateEvent<'update-review'> {
+    object_id: number;
+}
+
 export interface UpdateBloggerVideoEvent extends MessageUpdateEvent<'update-bloggervideo'> {
     object_id: number;
 }
@@ -96,6 +100,7 @@ export type UpdateEventsData = {
     'update-blogger': IBloggerJson;
     'update-bloggervideo': IBloggerVideoFullJson;
     'update-collection': ICollectionJson;
+    'update-review': IReviewFullJson;
 };
 
 
@@ -109,6 +114,7 @@ export type AllClientEvents = {
     'message-deleted': MessageDeletedEvent;
     'update-blogger': UpdateBloggerEvent;
     'update-anime': UpdateAnimeEvent;
+    'update-review': UpdateReviewEvent;
     'update-bloggervideo': UpdateBloggerVideoEvent;
     'update-collection': UpdateCollectionEvent;
     // Add other mappings as needed
