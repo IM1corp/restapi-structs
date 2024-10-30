@@ -1,3 +1,5 @@
+import {IUserNickAndAva} from "../utils/database/structs";
+
 export type IFriendStatus = 'friends' | 'requests' | 'followers' | 'sent-requests' | 'following';//"friends"|'requests'|'followers';
 export type VideoCategoryType = 'top' | 'review' | 'amv' | 'news' | 'other' | 'quiz';
 export type ICommentable = 'anime' | 'post' | 'review' | 'user' | 'blogvideo';
@@ -172,7 +174,7 @@ export interface ICollectionJson {
     animes: IOneAnimeSmallJson[];
 }
 
-export type ICollectionPreview = Omit<ICollectionJson, 'animes' | 'likes'> & {likes: Omit<ILikesJson, 'vote'>};
+export type ICollectionPreview = Omit<ICollectionJson, 'animes' | 'likes'> & { likes: Omit<ILikesJson, 'vote'> };
 
 export interface IProfileJson extends IUserJson {
     notifications: {
@@ -665,7 +667,7 @@ export interface IReviewJson {
     review_id: number;
     update_date: number;
     create_date: number;
-    user_id: number;
+
     anime_id: number;
     text_html: string;
     type: 'approved' | 'waiting' | 'declined';
@@ -674,17 +676,35 @@ export interface IReviewJson {
     rating?: {
         average?: number;
         // title -> value
-        category: Record<string, number>;
+        category: { Music: number, "No plot": number }
     }
-    total_likes: number;
     check_comment?: string;
     views: number;
+    author: IUserJsonNicknameAndAva;
 
-
+    likes: ILikesJson;
+    /**
+     * @Deprecated
+     */
+    user_id: number;
+    /**
+     * @Deprecated
+     */
+    total_likes: number;
+    /**
+     * @Deprecated
+     */
     avatar: IUserJson['avatars']
+    /**
+     * @Depreacted
+     */
     nickname: IUserJson['nickname']
+    /**
+     * @Deprecated
+     */
     user_roles: IUserJson['roles']
 }
+
 export type IReviewFullJson = IReviewJson & {
     anime: IOneAnimeJson;
 }
