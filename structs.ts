@@ -1,4 +1,3 @@
-import {IUserNickAndAva} from "../utils/database/structs";
 
 export type IFriendStatus = 'friends' | 'requests' | 'followers' | 'sent-requests' | 'following';//"friends"|'requests'|'followers';
 export type VideoCategoryType = 'top' | 'review' | 'amv' | 'news' | 'other' | 'quiz';
@@ -708,6 +707,7 @@ export interface IReviewJson {
 export type IReviewFullJson = IReviewJson & {
     anime: IOneAnimeJson;
     reviews_count: number;
+    comments_count: number;
 }
 
 export interface IOneAppJsonSmall {
