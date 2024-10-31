@@ -668,7 +668,6 @@ export interface IReviewJson {
     create_date: number;
 
     anime_id: number;
-    text_html: string;
     type: 'approved' | 'waiting' | 'declined';
     published_by: number;
     commentable: boolean;
@@ -704,7 +703,13 @@ export interface IReviewJson {
     user_roles: IUserJson['roles']
 }
 
+
+export type IReviewAnime = IReviewJson & {
+    text_html: string;
+}
+
 export type IReviewFullJson = IReviewJson & {
+    text_html: string;
     anime: IOneAnimeJson;
     reviews_count: number;
     comments_count: number;
