@@ -254,6 +254,16 @@ export interface IOneAnimeSmallJson extends IAnimeJson {
         counters: number;
         average: number;
     }
+    remote_ids: {
+        worldart_id: number;
+        worldart_type?: 'animation' | 'cinema';
+        shikimori_id: number;
+        sr_id?: number;
+        kp_id?: number;
+        myanimelist_id?: number;
+        anilibria_alias?: string;
+        anidub_id?: number;
+    };
 }
 
 export interface IMessageEditionWriteJson {
