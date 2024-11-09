@@ -710,19 +710,21 @@ export interface IReviewJson {
     /**
      * @Deprecated
      */
-    user_roles: IUserJson['roles']
+    user_roles: IUserJson['roles'];
+
 }
 
 
 export type IReviewAnime = IReviewJson & {
     text_html: string;
 }
-
-export type IReviewFullJson = IReviewJson & {
-    text_html: string;
-    anime: IOneAnimeJson;
-    reviews_count: number;
+export type IReviewJsonList = IReviewJson & {
+    anime: IOneAnimeSmallJson;
     comments_count: number;
+}
+export type IReviewFullJson = IReviewJsonList & {
+    text_html: string;
+    reviews_count: number;
 }
 
 export interface IOneAppJsonSmall {
