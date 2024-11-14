@@ -4,7 +4,7 @@ import {
     IBloggerVideoFullJson, ICollectionJson,
     INotificationJson,
     IOneAnimeJson,
-    IOneMessageJson, IReviewFullJson, IUserJson, IUserJsonFull
+    IOneMessageJson, IReviewFullJson, IUserJsonFull
 } from "./database";
 
 export type SubscribableObjectType = 'blogger' | 'anime' | 'bloggervideo' | 'collection' | 'review' | 'user';
