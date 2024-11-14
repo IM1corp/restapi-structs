@@ -170,6 +170,8 @@ export type IUserJsonFull = IUserJson & {
         sum: (IAnimeType & {spent_time: number})[],
         history: IHistoryView[]
     }
+
+    days_online: number;
 }
 
 export interface ICollectionJson {
