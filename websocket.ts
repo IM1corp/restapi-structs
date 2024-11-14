@@ -13,7 +13,7 @@ interface ClientEvent {
     event: string;
 }
 
-//client
+// client
 export interface ErrorEvent extends ClientEvent {
     event: 'error';
     error: string;
@@ -127,7 +127,7 @@ export type ClientEventTypes = keyof AllClientEvents;
 
 export type UpdateEvents = keyof UpdateEventsData;
 
-//server
+// server
 
 
 export interface SendMessage {
