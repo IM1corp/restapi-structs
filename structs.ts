@@ -160,7 +160,17 @@ export interface IUserJson {
         color: number;
     };
 }
-
+export type IHistoryView = {
+    when: number;
+    ep_count: number;
+    duration: number;
+}
+export type IUserJsonFull = IUserJson & {
+    watches: {
+        sum: (IAnimeType & {spent_time: number})[],
+        history: IHistoryView[]
+    }
+}
 
 export interface ICollectionJson {
     id: number;
