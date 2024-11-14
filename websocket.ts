@@ -4,10 +4,10 @@ import {
     IBloggerVideoFullJson, ICollectionJson,
     INotificationJson,
     IOneAnimeJson,
-    IOneMessageJson, IReviewFullJson
+    IOneMessageJson, IReviewFullJson, IUserJson, IUserJsonFull
 } from "./database";
 
-export type SubscribableObjectType = 'blogger' | 'anime' | 'bloggervideo' | 'collection' | 'review';
+export type SubscribableObjectType = 'blogger' | 'anime' | 'bloggervideo' | 'collection' | 'review' | 'user';
 
 interface ClientEvent {
     event: string;
@@ -78,7 +78,9 @@ type RecursivePartial<T> = {
 export interface UpdateBloggerEvent extends MessageUpdateEvent<'update-blogger'> {
     object_id: number;
 }
-
+export interface UpdateUserEvent extends MessageUpdateEvent<'update-user'> {
+    object_id: number;
+}
 export interface UpdateAnimeEvent extends MessageUpdateEvent<'update-anime'> {
     object_id: number;
 }
@@ -101,6 +103,7 @@ export type UpdateEventsData = {
     'update-bloggervideo': IBloggerVideoFullJson;
     'update-collection': ICollectionJson;
     'update-review': IReviewFullJson;
+    'update-user': IUserJsonFull;
 };
 
 
@@ -113,6 +116,7 @@ export type AllClientEvents = {
     'message-edited': MessageEditedEvent;
     'message-deleted': MessageDeletedEvent;
     'update-blogger': UpdateBloggerEvent;
+    'update-user': UpdateUserEvent;
     'update-anime': UpdateAnimeEvent;
     'update-review': UpdateReviewEvent;
     'update-bloggervideo': UpdateBloggerVideoEvent;
