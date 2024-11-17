@@ -1,4 +1,3 @@
-
 export type IFriendStatus = 'friends' | 'requests' | 'followers' | 'sent-requests' | 'following';//"friends"|'requests'|'followers';
 export type VideoCategoryType = 'top' | 'review' | 'amv' | 'news' | 'other' | 'quiz';
 export type ICommentable = 'anime' | 'post' | 'review' | 'user' | 'blogvideo';
@@ -160,6 +159,7 @@ export interface IUserJson {
         color: number;
     };
 }
+
 export type IHistoryView = {
     when: number;
     ep_count: number;
@@ -167,11 +167,19 @@ export type IHistoryView = {
 }
 export type IUserJsonFull = IUserJson & {
     watches: {
-        sum: (IAnimeType & {spent_time: number})[],
+        sum: (IAnimeType & { spent_time: number })[],
         history: IHistoryView[]
     }
 
     days_online: number;
+    counts?: {
+        1: 123,
+        2: 193,
+        3: 1242,
+        4: 123,
+        0: 123,
+        5: 123
+    }
 }
 
 export interface ICollectionJson {
