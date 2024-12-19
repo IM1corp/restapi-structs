@@ -165,11 +165,19 @@ export type IHistoryView = {
     ep_count: number;
     duration: number;
 }
+export type IFriendsCounts = {
+    friends: number;
+    requests: number;
+    followers: number;
+    following: number;
+    sentRequests: number;
+}
 export type IUserJsonFull = IUserJson & {
     watches: {
         sum: (IAnimeType & { spent_time: number })[],
         history: IHistoryView[]
     }
+    friends?: IFriendsCounts;
 
     days_online: number;
     counts?: {
