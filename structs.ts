@@ -173,6 +173,7 @@ export type IFriendsCounts = {
     sentRequests: number;
 }
 export type IUserJsonFull = IUserJson & {
+    reviewsCount: number;
     watches: {
         sum: (IAnimeType & { spent_time: number })[],
         history: IHistoryView[]
