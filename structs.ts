@@ -774,6 +774,14 @@ export interface IUserJsonNicknameAndAva {
     nickname: string;
     avatars: AvatarJson;
 }
+type IPasskeyJson = {
+    credential_id: string;
+    authenticator_type: number;
+    created_at: number;
+    updated_at: number;
+    public_key: string;
+    rely_party_id: number;
+}
 
 export interface IPostJsonSmall {
     id: number;
