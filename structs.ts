@@ -774,14 +774,14 @@ export interface IUserJsonNicknameAndAva {
     nickname: string;
     avatars: AvatarJson;
 }
-type IPasskeyJson = {
+export type IPasskeyJson = {
     credential_id: string;
-    authenticator_type: number;
+    authenticator_type:  "platform" | "cross-platform";
     created_at: number;
     updated_at: number;
-    public_key: string;
-    rely_party_id: number;
+    rely_party_id: string;
 }
+
 
 export interface IPostJsonSmall {
     id: number;
