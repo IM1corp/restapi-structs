@@ -4,10 +4,10 @@ import {
     IBloggerVideoFullJson, ICollectionJson,
     INotificationJson,
     IOneAnimeJson,
-    IOneMessageJson, IReviewFullJson, IUserJsonFull
+    IOneMessageJson, IPostJson, IReviewFullJson, IUserJsonFull
 } from "./database";
 
-export type SubscribableObjectType = 'blogger' | 'anime' | 'bloggervideo' | 'collection' | 'review' | 'user';
+export type SubscribableObjectType = 'blogger' | 'anime' | 'bloggervideo' | 'collection' | 'review' | 'user' | 'post'
 
 interface ClientEvent {
     event: string;
@@ -96,12 +96,16 @@ export interface UpdateBloggerVideoEvent extends MessageUpdateEvent<'update-blog
 export interface UpdateCollectionEvent extends MessageUpdateEvent<'update-collection'> {
     object_id: number;
 }
+export interface UpdatePostEvent extends MessageUpdateEvent<'update-post'> {
+
+}
 
 export type UpdateEventsData = {
     'update-anime': IOneAnimeJson;
     'update-blogger': IBloggerJson;
     'update-bloggervideo': IBloggerVideoFullJson;
     'update-collection': ICollectionJson;
+    'update-post': IPostJson;
     'update-review': IReviewFullJson;
     'update-user': IUserJsonFull;
 };

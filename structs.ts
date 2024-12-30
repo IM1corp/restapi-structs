@@ -796,6 +796,7 @@ export interface IPostJsonSmall {
 export interface IPostJson extends Omit<IPostJsonSmall, 'content_preview'> {
     edited_at: number;
     content: string;
+    comments: number;
 }
 
 export interface IEditJson {
