@@ -126,6 +126,7 @@ export type AllClientEvents = {
     'update-review': UpdateReviewEvent;
     'update-bloggervideo': UpdateBloggerVideoEvent;
     'update-collection': UpdateCollectionEvent;
+    'update-post': UpdatePostEvent;
     // Add other mappings as needed
 };
 export type ClientEventTypes = keyof AllClientEvents;
