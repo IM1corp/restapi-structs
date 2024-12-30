@@ -111,6 +111,7 @@ export type UpdateEventsData = {
 };
 
 
+
 export type AllClientEvents = {
     'error': ErrorEvent;
     'statistics': StatisticsUpdateEvent;
