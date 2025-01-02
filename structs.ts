@@ -799,7 +799,7 @@ export interface IPostJson extends Omit<IPostJsonSmall, 'content_preview'> {
     comments: number;
     views: number;
     likes: ILikesJson;
-    animes: IOneAnimeSmallJson[];
+    animes: IOneAnimeJson[];
 }
 
 export interface IEditJson {
