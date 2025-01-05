@@ -3,7 +3,7 @@ export type VideoCategoryType = 'top' | 'review' | 'amv' | 'news' | 'other' | 'q
 export type ICommentable = 'anime' | 'post' | 'review' | 'user' | 'blogvideo';
 type AcceptedLanguageType = 'ru' | 'en' | 'ua';
 
-export type Role = 'root' | 'admin' | 'supereditor' | 'editor' | 'chatadmin' | 'videoblogger' | 'reviewer';
+export type Role = 'root' | 'admin' | 'supereditor' | 'editor' | 'chatadmin' | 'videoblogger' | 'reviewer' | 'newsroom';
 
 //export
 
