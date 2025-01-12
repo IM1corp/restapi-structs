@@ -203,7 +203,9 @@ export interface ICollectionJson {
 }
 
 export type ICollectionPreview = Omit<ICollectionJson, 'animes' | 'likes'> & { likes: Omit<ILikesJson, 'vote'> };
-
+export type ICollectionMainJson = Omit<ICollectionJson, 'animes'> & {
+    posterPreviews: PosterJson[];
+}
 export interface IProfileJson extends IUserJson {
     notifications: {
         vk: boolean;
@@ -450,6 +452,7 @@ export interface MainPageJson {
             categories: VideoCategoryJson[]
         },
     }
+    collections: ICollectionPreview[];
 
 }
 
