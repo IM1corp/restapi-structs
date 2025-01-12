@@ -452,7 +452,7 @@ export interface MainPageJson {
             categories: VideoCategoryJson[]
         },
     }
-    collections: ICollectionPreview[];
+    collections: ICollectionMainJson[];
 
 }
 
