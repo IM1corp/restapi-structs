@@ -200,6 +200,7 @@ export interface ICollectionJson {
     likes: ILikesJson;
     language: AcceptedLanguageType;
     animes: IOneAnimeSmallJson[];
+    public: boolean;
 }
 
 export type ICollectionPreview = Omit<ICollectionJson, 'animes' | 'likes'> & { likes: Omit<ILikesJson, 'vote'> };
