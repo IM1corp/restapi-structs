@@ -207,6 +207,7 @@ export type ICollectionPreview = Omit<ICollectionJson, 'animes' | 'likes'> & { l
 export type ICollectionMainJson = Omit<ICollectionJson, 'animes'> & {
     posterPreviews: PosterJson[];
 }
+
 export interface IProfileJson extends IUserJson {
     notifications: {
         vk: boolean;
@@ -463,6 +464,7 @@ export interface ILastWatchJson extends IAnimeJson {
     ep_title: string;
     video_id: number;
     duration: number;
+    screenshot: IScreenShotJson | null;
 }
 
 
@@ -783,9 +785,10 @@ export interface IUserJsonNicknameAndAva {
     nickname: string;
     avatars: AvatarJson;
 }
+
 export type IPasskeyJson = {
     credential_id: string;
-    authenticator_type:  "platform" | "cross-platform";
+    authenticator_type: "platform" | "cross-platform";
     created_at: number;
     updated_at: number;
     rely_party_id: string;
