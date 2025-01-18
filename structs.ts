@@ -1,6 +1,6 @@
 export type IFriendStatus = 'friends' | 'requests' | 'followers' | 'sent-requests' | 'following';//"friends"|'requests'|'followers';
 export type VideoCategoryType = 'top' | 'review' | 'amv' | 'news' | 'other' | 'quiz';
-export type ICommentable = 'anime' | 'post' | 'review' | 'user' | 'blogvideo';
+export type ICommentable = 'anime' | 'post' | 'review' | 'user' | 'blogvideo' | 'collection';
 type AcceptedLanguageType = 'ru' | 'en' | 'ua';
 
 export type Role = 'root' | 'admin' | 'supereditor' | 'editor' | 'chatadmin' | 'videoblogger' | 'reviewer' | 'newsroom';
@@ -202,6 +202,7 @@ export interface ICollectionJson {
     animes: IOneAnimeSmallJson[];
     public: boolean;
     views: number;
+    comments_count?: number;
 }
 
 export type ICollectionPreview = Omit<ICollectionJson, 'animes' | 'likes'> & { likes: Omit<ILikesJson, 'vote'> };
