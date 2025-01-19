@@ -348,6 +348,7 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
     comments_count: number;
     reviews_count: number;
     other_titles: string[];
+    posts_count: number;
     rating?: {
         counters: number;
         average: number;
