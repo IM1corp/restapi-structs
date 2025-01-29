@@ -158,6 +158,7 @@ export interface IUserJson {
         right: string;
         color: number;
     };
+    banner: BannerJson;
 }
 
 export type IHistoryView = {
@@ -483,7 +484,10 @@ export interface IGenreJsonFull extends IGenreJson {
     description: string;
     subGenres: IGenreJson[];
 }
-
+export interface BannerJson{
+    full: string;
+    cropped: string;
+}
 export interface AvatarJson {
     /**
      * Image size with 90x90px
