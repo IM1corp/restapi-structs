@@ -544,6 +544,7 @@ export interface IOneMessageDialogJson {
     avatars: AvatarJson;
     user_id: number;
     banned: boolean;
+    date: number;
 }
 
 export interface IMessageHistory {
