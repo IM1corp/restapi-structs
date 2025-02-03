@@ -545,6 +545,7 @@ export interface IOneMessageDialogJson {
     user_id: number;
     banned: boolean;
     date: number;
+    last_online: number
 }
 
 export interface IMessageHistory {
