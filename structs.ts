@@ -92,6 +92,7 @@ export interface IAnimeFavoriteJson extends Omit<IAnimeJson, "description"> {
     rating: number;
     anime_status: IAnimeStatus;
     next_episode?: number;
+    remote_ids: RemoteIdsJson;
 }
 
 export interface ICommentJson {
@@ -291,18 +292,19 @@ export interface IOneAnimeSmallJson extends IAnimeJson {
         counters: number;
         average: number;
     }
-    remote_ids: {
-        worldart_id: number;
-        worldart_type?: 'animation' | 'cinema';
-        shikimori_id: number;
-        sr_id?: number;
-        kp_id?: number;
-        myanimelist_id?: number;
-        anilibria_alias?: string;
-        anidub_id?: number;
-    };
+    remote_ids: RemoteIdsJson;
 }
 
+export interface RemoteIdsJson {
+    worldart_id: number;
+    worldart_type?: 'animation' | 'cinema';
+    shikimori_id: number;
+    sr_id?: number;
+    kp_id?: number;
+    myanimelist_id?: number;
+    anilibria_alias?: string;
+    anidub_id?: number;
+}
 export interface IMessageEditionWriteJson {
     message_edition_write_id: number,
     edited_by_id: number,
