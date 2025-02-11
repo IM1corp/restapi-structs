@@ -305,6 +305,7 @@ export interface RemoteIdsJson {
     anilibria_alias?: string;
     anidub_id?: number;
 }
+
 export interface IMessageEditionWriteJson {
     message_edition_write_id: number,
     edited_by_id: number,
@@ -345,6 +346,12 @@ export interface IScreenShotJson {
         full: string;
     }
     id: number;
+}
+
+export interface IDirectorJson {
+    title: string;
+    id: number;
+    titleJP: string;
 }
 
 export interface IOneAnimeJson extends IOneAnimeSmallJson {
@@ -486,10 +493,12 @@ export interface IGenreJsonFull extends IGenreJson {
     description: string;
     subGenres: IGenreJson[];
 }
-export interface BannerJson{
+
+export interface BannerJson {
     full: string;
     cropped: string;
 }
+
 export interface AvatarJson {
     /**
      * Image size with 90x90px
