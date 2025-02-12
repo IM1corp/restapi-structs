@@ -20,6 +20,7 @@ export interface FilterAnimeGetParams {
     offset: string | number;
     ids?: StringOrArray;
     id?: StringOrArray;
+    q?: string;
 
 
     max_rating?: string;
