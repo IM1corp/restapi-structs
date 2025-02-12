@@ -90,6 +90,7 @@ export interface IAnimeFavoriteJson extends Omit<IAnimeJson, "description"> {
     user: IUserAnimeInfo;
     genres: IGenreJson[];
     rating: number;
+    rating_counters: number;
     anime_status: IAnimeStatus;
     next_episode?: number;
     remote_ids: RemoteIdsJson;
