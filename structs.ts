@@ -93,6 +93,10 @@ export interface IAnimeFavoriteJson extends Omit<IAnimeJson, "description"> {
     anime_status: IAnimeStatus;
     next_episode?: number;
     remote_ids: RemoteIdsJson;
+    top: {
+        global: number;
+        category: number;
+    }
 }
 
 export interface ICommentJson {
