@@ -10,7 +10,7 @@ export interface FilterAnimeGetParams {
     from_year?: string;
     to_year?: string;
     need_videos?: "1"|'0';
-
+    director_ids?: StringOrArray;
     ep_from?: string;
     ep_to?: string;
     min_age?: string;
