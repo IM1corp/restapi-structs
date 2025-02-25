@@ -298,6 +298,10 @@ export interface IOneAnimeSmallJson extends IAnimeJson {
         average: number;
     }
     remote_ids: RemoteIdsJson;
+    top: {
+        global: number;
+        category: number;
+    }
 }
 
 export interface RemoteIdsJson {
