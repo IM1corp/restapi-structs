@@ -98,6 +98,8 @@ export interface IAnimeFavoriteJson extends Omit<IAnimeJson, "description"> {
         global: number;
         category: number;
     }
+    views: number
+    season: number;
 }
 
 export interface ICommentJson {
