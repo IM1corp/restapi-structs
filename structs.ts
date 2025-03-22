@@ -142,6 +142,9 @@ export interface ICommentJsonComplaint extends ICommentJson {
 
 export interface OtherIdsJson {
     vk?: number;
+    discord?: {
+        id: string;
+    };
     tg_nickname?: string;
     shikimori?: {
         nickname: string;
@@ -230,6 +233,7 @@ export interface IProfileJson extends IUserJson {
         vk_public: boolean;
         tg_public: boolean;
         shiki_public: boolean;
+        discord_public: boolean;
     }
 }
 
