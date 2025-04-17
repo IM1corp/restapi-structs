@@ -797,6 +797,7 @@ export type IReviewAnime = IReviewJson & {
 export type IReviewJsonList = IReviewJson & {
     anime: IOneAnimeSmallJson;
     comments_count: number;
+    text_preview: string;
 }
 export type IReviewFullJson = IReviewJsonList & {
     text_html: string;
