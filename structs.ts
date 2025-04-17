@@ -799,7 +799,7 @@ export type IReviewJsonList = IReviewJson & {
     comments_count: number;
     text_preview: string;
 }
-export type IReviewFullJson = IReviewJsonList & {
+export type IReviewFullJson = Omit<IReviewJsonList, "text_preview"> & {
     text_html: string;
     reviews_count: number;
 }
