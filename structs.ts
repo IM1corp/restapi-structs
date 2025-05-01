@@ -808,10 +808,13 @@ export interface IReviewJson {
     user_roles: IUserJson["roles"];
 }
 
-export type IUserStaff = IUserJsonNicknameAndAva & {
-    department: string;
+export type IUserStaffJson = IUserJsonNicknameAndAva & {
+    // department: string;
     job_title: string;
     status: "active" | "old";
+}
+export type UserStaffResponseJson = {
+    [k: string]: { description: string, users: IUserStaffJson[], head: IUserStaffJson | null }
 }
 
 export type IReviewAnime = IReviewJson & {
