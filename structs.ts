@@ -18,7 +18,7 @@ export type ICommentable =
     | "user"
     | "blogvideo"
     | "collection";
-type AcceptedLanguageType = "ru" | "en" | "ua";
+type AcceptedLanguageType = "ru" | "en" | "uk";
 
 export type Role =
     | "root"
