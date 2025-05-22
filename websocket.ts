@@ -127,6 +127,7 @@ export type AllClientEvents = {
     'update-bloggervideo': UpdateBloggerVideoEvent;
     'update-collection': UpdateCollectionEvent;
     'update-post': UpdatePostEvent;
+    pong: { event: 'pong' };
     // Add other mappings as needed
 };
 export type ClientEventTypes = keyof AllClientEvents;
@@ -182,6 +183,7 @@ export type WebSocketEvents = {
     'read-messages': ReadMessage;
     'subscribe-events': { event: 'subscribe-events' };
     'unsubscribe-events': { event: 'unsubscribe-events' };
+    'ping': { event: 'ping' };
     // Add other mappings as needed
 };
 
