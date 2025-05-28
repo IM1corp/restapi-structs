@@ -50,6 +50,7 @@ export interface MessageReadEvent extends ClientEvent {
     event: 'message-read';
     user_id: number;
     is_owner: boolean;
+
 }
 
 export interface MessageEditedEvent extends ClientEvent {

@@ -427,6 +427,10 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
     viewing_order: IViewingOrderJson[];
     translates: ITranslate[];
     blocked_in: string[];
+    blocked?: {
+        by_sr?: boolean;
+        blocked: boolean;
+    };
     episodes: {
         aired: number;
         count: number;
