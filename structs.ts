@@ -816,10 +816,14 @@ export type IUserStaffJson = IUserJsonNicknameAndAva & {
     // department: string;
     job_title: string;
     status: "active" | "old";
-}
+};
 export type UserStaffResponseJson = {
-    [k: string]: { description: string, users: IUserStaffJson[], head: IUserStaffJson | null }
-}
+    [k: string]: {
+        description: string;
+        users: IUserStaffJson[];
+        head: IUserStaffJson | null;
+    };
+};
 
 export type IReviewAnime = IReviewJson & {
     text_html: string;
@@ -918,3 +922,20 @@ export interface OneGenreGroup {
     title: string;
     id: number;
 }
+
+export type IUserWatch = IUserJsonNicknameAndAva & {
+    time: number;
+};
+
+export type IRoomJson = {
+    room_id: string;
+    title: string;
+    password?: string;
+    owner?: number;
+    anime_id?: number;
+    episode?: number;
+    dubbing?: string;
+    player?: string;
+    public: boolean;
+    users: IUserWatch[];
+};
