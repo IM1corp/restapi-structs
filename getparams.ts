@@ -41,6 +41,7 @@ export interface FilterAnimeGetParams {
     max_rating_counters?: string;
     require_fields?: StringOrArray;
     shikimori_ids?: StringOrArray<number>;
+    kp_ids?: StringOrArray<number>;
     studio_ids?: StringOrArray<number>;
     mal_ids?: StringOrArray<number>;
 }
