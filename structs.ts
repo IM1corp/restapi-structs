@@ -769,6 +769,7 @@ export interface RegisterFormData {
     "g-recaptcha-response": string;
     hash?: string;
     shiki?: string;
+    need_token: true;
 }
 
 export interface IReviewJson {
