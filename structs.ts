@@ -56,6 +56,7 @@ export interface IOneVideoJson {
         date: number;
     };
     subscribed?: boolean;
+    views: number;
 }
 
 export interface IFeedVideoJson extends IAnimeJson {
