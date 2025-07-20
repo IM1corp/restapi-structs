@@ -3,7 +3,7 @@ export type IFriendStatus =
     | "requests"
     | "followers"
     | "sent-requests"
-    | "following"; //"friends"|'requests'|'followers';
+    | "following"; // "friends"|'requests'|'followers';
 export type VideoCategoryType =
     | "top"
     | "review"
