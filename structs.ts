@@ -106,6 +106,10 @@ export interface PosterJson {
      * Huge poster - 400x560
      */
     huge: string;
+    /**
+     * Mega poster - 570x800
+     */
+    mega: string;
 }
 
 export interface IAnimeFavoriteJson extends Omit<IAnimeJson, "description"> {
