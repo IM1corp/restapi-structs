@@ -30,7 +30,7 @@ export type Role =
     | "reviewer"
     | "newsroom";
 
-//export
+// export
 
 export interface SkipTimeJson {
     time: number;
@@ -146,7 +146,7 @@ export interface ICommentJson {
     vote?: number;
     children_count: number;
     parent_id?: number;
-    /**In profile comments - data about comment element*/
+    /** In profile comments - data about comment element */
     item_data?: {
         posters?: PosterJson;
         title?: string;
@@ -162,7 +162,7 @@ export interface ICommentJsonComplaint extends ICommentJson {
     from_user: {
         id: number;
     };
-    /**Complain comment object data*/
+    /** Complain comment object data */
     item_data_complain: {
         posters?: PosterJson;
         title?: string;
@@ -326,7 +326,7 @@ export interface IOneAnimeSmallJson extends IAnimeJson {
     year: number;
     anime_status: IAnimeStatus;
     season: number;
-    min_age: { value: number; title: string | null; titleLong: string | null };
+    min_age: { value: number; title: string | null; title_long: string | null };
     user?: IUserAnimeInfo;
     type: IAnimeType;
     views: number;
@@ -385,9 +385,9 @@ export interface IScreenShotJson {
     episode: string;
     time: number;
     sizes: {
-        /*250x150px*/
+        /* 250x150px */
         small: string;
-        /*Full HD*/
+        /* Full HD */
         full: string;
     };
     id: number;

@@ -126,9 +126,9 @@ export interface GetReviewsQueryMany {
 }
 
 export interface IStatisticParam {
-    //node-id
+    // node-id
     [k: number]: {
-        //date     : percent
+        // date: percent
         [k: number]: number;
     };
 }
