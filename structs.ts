@@ -251,7 +251,7 @@ export type ICollectionPreview = Omit<ICollectionJson, "animes" | "likes"> & {
     likes: Omit<ILikesJson, "vote">;
 };
 export type ICollectionMainJson = Omit<ICollectionJson, "animes"> & {
-    posterPreviews: PosterJson[];
+    poster_previews: PosterJson[];
 };
 
 export interface IProfileJson extends IUserJson {
@@ -396,7 +396,7 @@ export interface IScreenShotJson {
 export interface IDirectorJson {
     title: string;
     id: number;
-    titleJP: string;
+    title_jp: string;
 }
 
 export interface IOneAnimeJson extends IOneAnimeSmallJson {
@@ -536,7 +536,7 @@ export interface IGenreJson {
 
 export interface IGenreJsonFull extends IGenreJson {
     description: string;
-    subGenres: IGenreJson[];
+    sub_genres: IGenreJson[];
 }
 
 export interface BannerJson {
