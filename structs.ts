@@ -40,6 +40,7 @@ export interface SkipTimeJson {
 export interface IOneVideoJson {
     video_id: number;
     number: string;
+
     iframe_url: string;
     data: {
         player: string;
@@ -57,6 +58,7 @@ export interface IOneVideoJson {
     };
     subscribed?: boolean;
     views: number;
+    duration: number;
 }
 
 export interface IFeedVideoJson extends IAnimeJson {
@@ -161,6 +163,7 @@ export interface ICommentJsonComplaint extends ICommentJson {
     };
     from_user: {
         id: number;
+        nickname: string;
     };
     /** Complain comment object data */
     item_data_complain: {
@@ -200,6 +203,11 @@ export interface IUserJson {
         color: number;
     };
     banner: BannerJson;
+    banned_details?: {
+        until: number;
+        reason: string | null;
+        banned_by: IUserJsonNicknameAndAva;
+    };
 }
 
 export type IHistoryView = {
@@ -446,6 +454,8 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
         global: number;
         category: number;
     };
+    duration: number;
+
 }
 
 export interface IListStatus {
