@@ -709,12 +709,15 @@ export enum MessageStatusComplaints {
     Argue = 4,
 }
 
-export interface INotificationJson {
+export interface INotificationJson<T = unknown> {
     id: number;
     text_html: string;
     title_html: string;
     date: number;
     click_uri: string;
+    type: string;
+    sub_type: string;
+    data: T;
 }
 
 export type NotificationType =
