@@ -720,6 +720,7 @@ export interface INotificationJson<T = unknown> {
     data: T;
 }
 
+export type NotificationTypeNew = 'comment'| 'review'| 'blogvideo'| 'post'| 'collection'| 'friend' | 'viewingorderupdate'|'anime_episode';
 export type NotificationType =
     | "news"
     | "edit"
@@ -734,7 +735,7 @@ export interface INotificationFULL extends INotificationJson {
     deleted: boolean;
     viewed: boolean;
     sub_id: number;
-    type: NotificationType;
+    type: NotificationTypeNew|NotificationType;
 }
 
 export interface VideoCategoryJson {
