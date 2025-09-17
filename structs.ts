@@ -455,7 +455,6 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
         category: number;
     };
     duration: number;
-
 }
 
 export interface IListStatus {
@@ -718,9 +717,19 @@ export interface INotificationJson<T = unknown> {
     type: string;
     sub_type: string;
     data: T;
+    object_id: number;
+    viewed: boolean;
 }
 
-export type NotificationTypeNew = 'comment'| 'review'| 'blogvideo'| 'post'| 'collection'| 'friend' | 'viewingorderupdate'|'anime_episode';
+export type NotificationTypeNew =
+    | "comment"
+    | "review"
+    | "blogvideo"
+    | "post"
+    | "collection"
+    | "friend"
+    | "viewing_order_update"
+    | "anime_episode";
 export type NotificationType =
     | "news"
     | "edit"
@@ -735,7 +744,7 @@ export interface INotificationFULL extends INotificationJson {
     deleted: boolean;
     viewed: boolean;
     sub_id: number;
-    type: NotificationTypeNew|NotificationType;
+    type: NotificationTypeNew | NotificationType;
 }
 
 export interface VideoCategoryJson {
