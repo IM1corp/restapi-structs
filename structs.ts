@@ -21,14 +21,37 @@ export type ICommentable =
 type AcceptedLanguageType = "ru" | "en" | "uk";
 
 export type Role =
-    | "root"
-    | "admin"
-    | "supereditor"
-    | "editor"
-    | "chatadmin"
-    | "videoblogger"
-    | "reviewer"
-    | "newsroom";
+    'root'
+    | 'admin'
+    | 'supereditor'
+    | 'editor'
+    | 'chatadmin'
+    | 'videoblogger'
+    | 'reviewer'
+    | 'newsroom'
+    | 'moderatorHead'
+    | 'moderatorDeputy'
+    | 'moderatorPlus'
+    | 'reviewerHead'
+    | 'reviewerDeputy'
+    | 'reviewerPlus'
+    | 'newserHead'
+    | 'newserDeputy'
+    | 'newserPlus'
+    | 'editorHead'
+    | 'editorDeputy'
+    | 'testerHead'
+    | 'testerDeputy'
+    | 'tester'
+    | 'testerPlus'
+    | 'buster'
+    | 'moderator'
+    | 'projectHead'
+    | 'editorPlus'
+    | 'newser'
+    | 'coder'
+    | 'coderHead';
+
 
 // export
 
