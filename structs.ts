@@ -47,6 +47,7 @@ export type Role =
     | 'buster'
     | 'moderator'
     | 'projectHead'
+    | 'projectDeputy'
     | 'editorPlus'
     | 'newser'
     | 'coder'
@@ -370,6 +371,7 @@ export interface IOneAnimeSmallJson extends IAnimeJson {
         global: number;
         category: number;
     };
+    blocked_in: string[];
 }
 
 export interface RemoteIdsJson {
@@ -466,6 +468,8 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
     blocked?: {
         by_sr?: boolean;
         blocked: boolean;
+        in_account: boolean;
+        full: boolean;
     };
     episodes: {
         aired: number;
