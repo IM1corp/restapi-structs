@@ -476,6 +476,8 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
         count: number;
         next_date: number | null;
     };
+
+
     random_screenshots: IScreenShotJson[];
     top: {
         global: number;
