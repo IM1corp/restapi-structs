@@ -299,6 +299,9 @@ export interface IProfileJson extends IUserJson {
         shiki_public: boolean;
         discord_public: boolean;
     };
+    messages: {
+        unread_count: number;
+    }
 }
 
 export interface IFriendJson {
