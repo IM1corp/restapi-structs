@@ -95,7 +95,9 @@ export interface UpdateBloggerEvent
     extends MessageUpdateEvent<"update-blogger"> {
     object_id: number;
 }
-
+export interface UpdateProfileEvent extends MessageUpdateEvent<"update-profile">{
+    object_id: number;
+}
 export interface UpdateUserEvent extends MessageUpdateEvent<"update-user"> {
     object_id: number;
 }
@@ -161,6 +163,7 @@ export type AllClientEvents = {
     "message-deleted": MessageDeletedEvent;
     "update-blogger": UpdateBloggerEvent;
     "update-user": UpdateUserEvent;
+    "update-profile": UpdateProfileEvent;
     "update-anime": UpdateAnimeEvent;
     "update-review": UpdateReviewEvent;
     "update-bloggervideo": UpdateBloggerVideoEvent;
