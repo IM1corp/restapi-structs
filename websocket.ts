@@ -6,7 +6,7 @@ import {
     INotificationJson,
     IOneAnimeJson,
     IOneMessageJson,
-    IPostJson,
+    IPostJson, IProfileJson,
     IReviewFullJson,
     IRoomJson,
     IUserJsonFull,
@@ -20,6 +20,7 @@ export type SubscribableObjectType =
     | "collection"
     | "review"
     | "user"
+    | "profile"
     | "post";
 
 interface ClientEvent {
@@ -132,6 +133,7 @@ export type UpdateEventsData = {
     "update-review": IReviewFullJson;
     "update-user": IUserJsonFull;
     "update-room": IRoomJson;
+    "update-profile": IProfileJson;
 };
 export type UpdateRoomUserTimeEvent = {
     event: "room-update-user-time";
