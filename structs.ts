@@ -253,6 +253,7 @@ export type IUserJsonFull = IUserJson & {
         declined?: number;
         waiting?: number;
     };
+    comments_count?: number;
     watches: {
         sum: (IAnimeType & { spent_time: number })[];
         history: IHistoryView[];
