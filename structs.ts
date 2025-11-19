@@ -954,6 +954,7 @@ export interface IPostJson extends Omit<IPostJsonSmall, "content_preview"> {
     views: number;
     likes: ILikesJson;
     animes: IOneAnimeJson[];
+    status: "published" | "checking" | "rejected";
 }
 
 export interface IEditJson {
