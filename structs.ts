@@ -327,6 +327,7 @@ export interface IFriendJson {
     roles: Role[];
     list: IFriendStatus;
     ids: OtherIdsJson;
+    friend_status?: IFriendStatus | null;
 }
 
 export interface VideoBodyJson {
