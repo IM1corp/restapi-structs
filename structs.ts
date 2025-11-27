@@ -232,6 +232,7 @@ export interface IUserJson {
         reason: string | null;
         banned_by: IUserJsonNicknameAndAva;
     };
+    friend_status?: IFriendStatus | null;
 }
 
 export type IHistoryView = {
@@ -258,6 +259,7 @@ export type IUserJsonFull = IUserJson & {
         declined?: number;
         waiting?: number;
     }
+    collections_count?: number
     comments_count?: number;
     watches: {
         sum: (IAnimeType & { spent_time: number })[];
