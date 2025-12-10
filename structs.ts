@@ -325,6 +325,7 @@ export interface IFriendJson {
     avatars: AvatarJson;
     nickname: string;
     roles: Role[];
+    /** @deprecated Use friend_status field */
     list: IFriendStatus;
     ids: OtherIdsJson;
     friend_status?: IFriendStatus | null;
@@ -455,6 +456,7 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
     reviews_count: number;
     other_titles: string[];
     posts_count: number;
+    partner_videos_count: number;
     rating?: {
         counters: number;
         average: number;
