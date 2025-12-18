@@ -494,6 +494,7 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
         aired: number;
         count: number;
         next_date: number | null;
+        prev_date: number | null;
     };
 
 
