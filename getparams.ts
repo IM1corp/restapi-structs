@@ -5,6 +5,7 @@ export interface FilterAnimeGetParams {
     exclude_genres?: StringOrArray;
     types?: StringOrArray;
     translates?: StringOrArray;
+    exclude_list?: StringOrArray;
     status?: StringOrArray<
         "released" | "0" | "ongoing" | "1" | "announcement" | "announce" | "2"
     >;

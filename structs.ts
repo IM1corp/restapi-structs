@@ -21,38 +21,37 @@ export type ICommentable =
 type AcceptedLanguageType = "ru" | "en" | "uk";
 
 export type Role =
-    'root'
-    | 'admin'
-    | 'supereditor'
-    | 'editor'
-    | 'chatadmin'
-    | 'videoblogger'
-    | 'reviewer'
-    | 'newsroom'
-    | 'moderatorHead'
-    | 'moderatorDeputy'
-    | 'moderatorPlus'
-    | 'reviewerHead'
-    | 'reviewerDeputy'
-    | 'reviewerPlus'
-    | 'newserHead'
-    | 'newserDeputy'
-    | 'newserPlus'
-    | 'editorHead'
-    | 'editorDeputy'
-    | 'testerHead'
-    | 'testerDeputy'
-    | 'tester'
-    | 'testerPlus'
-    | 'buster'
-    | 'moderator'
-    | 'projectHead'
-    | 'projectDeputy'
-    | 'editorPlus'
-    | 'newser'
-    | 'coder'
-    | 'coderHead';
-
+    | "root"
+    | "admin"
+    | "supereditor"
+    | "editor"
+    | "chatadmin"
+    | "videoblogger"
+    | "reviewer"
+    | "newsroom"
+    | "moderatorHead"
+    | "moderatorDeputy"
+    | "moderatorPlus"
+    | "reviewerHead"
+    | "reviewerDeputy"
+    | "reviewerPlus"
+    | "newserHead"
+    | "newserDeputy"
+    | "newserPlus"
+    | "editorHead"
+    | "editorDeputy"
+    | "testerHead"
+    | "testerDeputy"
+    | "tester"
+    | "testerPlus"
+    | "buster"
+    | "moderator"
+    | "projectHead"
+    | "projectDeputy"
+    | "editorPlus"
+    | "newser"
+    | "coder"
+    | "coderHead";
 
 // export
 
@@ -258,8 +257,8 @@ export type IUserJsonFull = IUserJson & {
         approved?: number;
         declined?: number;
         waiting?: number;
-    }
-    collections_count?: number
+    };
+    collections_count?: number;
     comments_count?: number;
     watches: {
         sum: (IAnimeType & { spent_time: number })[];
@@ -314,7 +313,7 @@ export interface IProfileJson extends IUserJson {
     };
     messages: {
         unread_count: number;
-    }
+    };
 }
 
 export interface IFriendJson {
@@ -497,7 +496,6 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
         prev_date: number | null;
     };
 
-
     random_screenshots: IScreenShotJson[];
     top: {
         global: number;
@@ -505,6 +503,17 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
     };
     duration: number;
 }
+export type IEditAnimeJson = Partial<IAnimeJson> & {
+    title_ru?: string;
+    description_ru?: string;
+    description_en?: string;
+    description_uk?: string;
+    title_en?: string;
+    title_uk?: string;
+    alloha_episodes?: string;
+    alloha_season?: number;
+    alloha_worldart?: number;
+};
 
 export interface IListStatus {
     title: string;
