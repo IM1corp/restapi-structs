@@ -258,6 +258,10 @@ export type IUserJsonFull = IUserJson & {
         declined?: number;
         waiting?: number;
     };
+    oldNicknames: {
+        nickname: string;
+        date: number;
+    }[];
     posts_count?: {
         approved?: number;
         declined?: number;
