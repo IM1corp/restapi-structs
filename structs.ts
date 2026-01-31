@@ -21,37 +21,33 @@ export type ICommentable =
 type AcceptedLanguageType = "ru" | "en" | "uk";
 
 export type Role =
-    | "root"
-    | "admin"
-    | "supereditor"
-    | "editor"
-    | "chatadmin"
-    | "videoblogger"
-    | "reviewer"
-    | "newsroom"
-    | "moderatorHead"
-    | "moderatorDeputy"
-    | "moderatorPlus"
-    | "reviewerHead"
-    | "reviewerDeputy"
-    | "reviewerPlus"
-    | "newserHead"
-    | "newserDeputy"
-    | "newserPlus"
-    | "editorHead"
-    | "editorDeputy"
-    | "testerHead"
-    | "testerDeputy"
-    | "tester"
-    | "testerPlus"
-    | "buster"
-    | "moderator"
-    | "projectHead"
-    | "projectDeputy"
-    | "editorPlus"
-    | "newser"
-    | "coder"
-    | "coderHead";
+    'root'
+    | 'editor'
+    | 'videoblogger'
+    | 'reviewer'
+    | 'moderatorHead'
+    | 'moderatorDeputy'
+    | 'moderatorPlus'
+    | 'reviewerHead'
+    | 'reviewerDeputy'
+    | 'reviewerPlus'
+    | 'newserHead'
+    | 'newserDeputy'
+    | 'newserPlus'
+    | 'editorHead'
+    | 'editorDeputy'
+    | 'testerHead'
+    | 'testerDeputy'
+    | 'tester'
+    | 'testerPlus'
+    | 'buster'
+    | 'moderator'
+    | 'projectHead'
+    | 'projectDeputy'
+    | 'editorPlus'
+    | 'newser'
+    | 'coder'
+    | 'coderHead';
 
 // export
 
@@ -192,6 +188,8 @@ export interface ICommentJsonComplaint extends ICommentJson {
     from_user: {
         id: number;
         nickname: string;
+        avatars: AvatarJson;
+        roles: Role[];
     };
     /** Complain comment object data */
     item_data_complain: {
@@ -542,6 +540,7 @@ export interface IAnimeType {
     value: number;
     name: string;
     shortname: string;
+    alias: string;
 }
 
 export interface IAnimeStatus {
@@ -658,6 +657,8 @@ export interface IBanJson {
     moderator: {
         id: number;
         nickname: string;
+        avatars: AvatarJson;
+        roles: string;
     };
     user: IUserJson;
     ban: {
