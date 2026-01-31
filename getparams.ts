@@ -60,10 +60,9 @@ export interface UsersSearchGetParams {
     sex?: "all" | "m" | "w";
     groups?: StringOrArray<
         | "editor"
-        | "supereditor"
-        | "admin"
+        | "editorPlus"
         | "root"
-        | "chatadmin"
+        | "moderator"
         | "videoblogger"
         | "reviewer"
     >;
