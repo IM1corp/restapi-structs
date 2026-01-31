@@ -49,7 +49,6 @@ export type Role =
     | 'coder'
     | 'coderHead';
 
-
 // export
 
 export interface SkipTimeJson {
@@ -65,6 +64,7 @@ export interface IOneVideoJson {
     data: {
         player: string;
         dubbing: string;
+        player_id: number;
     };
     date: number;
     index: number;
@@ -80,6 +80,10 @@ export interface IOneVideoJson {
     views: number;
     duration: number;
 }
+
+export type IVideoToAddJson = Omit<IOneVideoJson, "video_id" | "subscribed" | "views" | "date" | "data" | "watched">;
+
+export type IVideoToModifyJson = Partial<IVideoToAddJson> & { video_id: number; };
 
 export interface IFeedVideoJson extends IAnimeJson {
     date: number;
@@ -260,8 +264,8 @@ export type IUserJsonFull = IUserJson & {
         approved?: number;
         declined?: number;
         waiting?: number;
-    }
-    collections_count?: number
+    };
+    collections_count?: number;
     comments_count?: number;
     watches: {
         sum: (IAnimeType & { spent_time: number })[];
@@ -316,7 +320,7 @@ export interface IProfileJson extends IUserJson {
     };
     messages: {
         unread_count: number;
-    }
+    };
 }
 
 export interface IFriendJson {
@@ -499,7 +503,6 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
         prev_date: number | null;
     };
 
-
     random_screenshots: IScreenShotJson[];
     top: {
         global: number;
@@ -507,6 +510,18 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
     };
     duration: number;
 }
+
+export type IEditAnimeJson = Partial<IAnimeJson> & {
+    title_ru?: string;
+    description_ru?: string;
+    description_en?: string;
+    description_uk?: string;
+    title_en?: string;
+    title_uk?: string;
+    alloha_episodes?: string;
+    alloha_season?: number;
+    alloha_worldart?: number;
+};
 
 export interface IListStatus {
     title: string;
