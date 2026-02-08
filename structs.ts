@@ -282,6 +282,57 @@ export type IUserJsonFull = IUserJson & {
     };
 };
 
+
+
+export type IDeletedCommentJson = {
+    change_type: "delete" | "restore";
+    reason: number;
+    date: number;
+    comment: ICommentJson;
+    moderator: {
+        id: number;
+        nickname: string;
+        roles: Role[];
+        avatars: AvatarJson;
+    };
+};
+
+export type ICommentHistoryJson = {
+    nickname: string;
+    change_type: 'add' | 'edit' | 'restore' | 'ban' | 'delete';
+    new_text?: string;
+    old_text?: string;
+    date: number;
+    user_id: number;
+    avatars: AvatarJson;
+}
+
+export type IMessageHistoryJson = {
+    change_type: "add" | "edit" | "delete" | "restore" | "ban";
+    avatars: AvatarJson;
+    new_text?: string;
+    old_text?: string;
+    date: number;
+    nickname: string;
+    user_id: number;
+}
+
+export type IBanDetailsJson = {
+    moderator: {
+        id: number;
+        nickname: string;
+        avatars: AvatarJson;
+        roles: Role[];
+    };
+    ban: {
+        id: number;
+        end: number;
+        active: boolean;
+        reason: string | null;
+        is_unban: boolean;
+    };
+};
+
 export interface ICollectionJson {
     id: number;
     title: string;
