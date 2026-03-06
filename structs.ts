@@ -282,6 +282,7 @@ export type IUserJsonFull = IUserJson & {
         0: 123;
         5: 123;
     };
+    email?: string;
 };
 
 export interface ICollectionJson {
@@ -372,6 +373,16 @@ export interface IAnimeJson {
     poster: PosterJson;
     title: string;
     description: string;
+}
+export type IDeletedCommentJson = any;
+export type IMessageHistoryJson = any;
+export type ICommentHistoryJson = any;
+export interface IAnimeJsonSub extends IAnimeJson {
+    sub: {
+        player: string;
+        dubbing: string;
+        player_id: number;
+    };
 }
 
 export interface IScheduleAnimeJson extends IAnimeJson {
