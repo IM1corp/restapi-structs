@@ -20,6 +20,55 @@ export type ICommentable =
     | "collection";
 type AcceptedLanguageType = "ru" | "en" | "uk";
 
+export type IMessageHistoryJson = {
+    change_type: "delete" | "restore" | "add" | "edit";
+    avatars: AvatarJson;
+    new_text?: string;
+    old_text?: string;
+    date: number;
+    nickname: string;
+    user_id: number;
+}
+
+export type IDeletedCommentJson = {
+    change_type: "delete" | "restore" | "add" | "edit" | "ban";
+    reason: number;
+    date: number;
+    comment: ICommentJson;
+    moderator: {
+        id: number;
+        nickname: string;
+        roles: Role[];
+        avatars: AvatarJson;
+    };
+};
+
+export type IBanDetailsJson = {
+    moderator: {
+        id: number;
+        nickname: string;
+        avatars: AvatarJson;
+        roles: Role[];
+    };
+    ban: {
+        id: number;
+        end: number;
+        active: boolean;
+        reason: string;
+        is_unban: boolean;
+    };
+};
+
+export type ICommentHistoryJson = {
+    nickname: string;
+    change_type: "add" | "edit" | "delete" | "ban" | "restore";
+    new_text?: string;
+    old_text?: string;
+    date: number;
+    user_id: number;
+    avatars: AvatarJson;
+}
+
 export type Role =
     'root'
     | 'editor'
