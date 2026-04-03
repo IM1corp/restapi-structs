@@ -349,7 +349,7 @@ export interface VideoBodyJson {
         small: string;
         big: string;
     };
-    language?: AcceptedLanguageType;
+    // language?: AcceptedLanguageType;
 }
 
 export interface VideoAnimeBodyJson {
@@ -964,6 +964,7 @@ export interface IUserJsonNicknameAndAva {
     id: number;
     nickname: string;
     avatars: AvatarJson;
+    roles: Role[]
 }
 
 export type IPasskeyJson = {
