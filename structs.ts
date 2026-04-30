@@ -49,6 +49,36 @@ export type Role =
     | 'coder'
     | 'coderHead';
 
+export type AccessTokenScope =
+    | 'profile:read'
+    | 'profile:write'
+    | 'account:security'
+    | 'notifications:read'
+    | 'notifications:write'
+    | 'library:read'
+    | 'library:write'
+    | 'social:read'
+    | 'social:write'
+    | 'messages:read'
+    | 'messages:write'
+    | 'comments:write'
+    | 'votes:write'
+    | 'reviews:write'
+    | 'posts:write'
+    | 'collections:write'
+    | 'uploads:write'
+    | 'apps:read'
+    | 'apps:write'
+    | 'edits:read'
+    | 'edits:write'
+    | 'moderation:read'
+    | 'moderation:write'
+    | 'users:moderate'
+    | 'users:roles'
+    | 'ipgroups:read'
+    | 'ipgroups:write'
+    | 'blogger-videos:write';
+
 // export
 
 export interface SkipTimeJson {
@@ -683,6 +713,7 @@ export interface IBanJson {
 
 export interface IOneMessageDialogJson {
     last_message: string;
+    last_message_deleted: boolean;
     roles: Role[];
     unread_count: number;
     nickname: string;
@@ -697,6 +728,7 @@ export interface IMessageHistory {
     avatars: AvatarJson;
     new_text: string | undefined;
     nickname: string;
+    roles: Role[];
     date: number;
     old_text: string;
     user_id: number;
@@ -711,12 +743,14 @@ export interface IClaimedMessageJson {
     is_closed: boolean;
     avatars: AvatarJson;
     nickname: string;
+    roles: Role[];
     message: {
         text: string;
         is_chat: boolean;
         owner: {
             nickname: string;
             id: number;
+            roles: Role[];
         };
     };
     status_complaints: MessageStatusComplaints;
@@ -747,38 +781,6 @@ export interface IOneMessageJson {
     } | null;
 }
 
-export interface IMessageChangeBase {
-    NickName: string;
-    Date: Date;
-    OldText: string;
-    UserId: number;
-    AvaVersion: number;
-}
-
-export interface IEditionWrite extends IMessageChangeBase {
-    NewText: string;
-}
-
-export interface IDeletionWrite extends IMessageChangeBase {
-    Deleted: boolean;
-}
-
-export interface IClaimedMessages {
-    MessageComplaintsId: number;
-    MessageId: number;
-    UserId: number;
-    Reason: number;
-    DateComplaints: Date;
-    IsClosed: boolean;
-    AvaVersion: number;
-    NickName: string;
-    Message: string;
-    IsChat: boolean;
-    MessageOwnerNickName: string;
-    MessageOwnerUserId: number;
-    StatusComplaints: MessageStatusComplaints;
-    IsLast: boolean;
-}
 
 export enum MessageStatusComplaints {
     Add = 0,
@@ -840,6 +842,7 @@ export interface IBloggerVideoAnimeJson {
         avatars: AvatarJson;
         nickname: string;
         id: number;
+        roles: Role[];
     };
     title: string;
     descriptions: {
