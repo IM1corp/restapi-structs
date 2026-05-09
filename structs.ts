@@ -506,6 +506,7 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
     posts_count: number;
     lists_count: number;
     partner_videos_count: number;
+    trailers_count: number;
     rating?: {
         counters: number;
         average: number;
