@@ -186,6 +186,7 @@ export interface IAnimeFavoriteJson extends Omit<IAnimeJson, "description"> {
     };
     views: number;
     season: number;
+    // sub
 }
 
 export interface ICommentJson {
@@ -503,6 +504,7 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
     reviews_count: number;
     other_titles: string[];
     posts_count: number;
+    lists_count: number;
     partner_videos_count: number;
     rating?: {
         counters: number;
@@ -699,7 +701,7 @@ export interface IBanJson {
         id: number;
         nickname: string;
         avatars: AvatarJson;
-        roles: string;
+        roles: Role[];
     };
     user: IUserJson;
     ban: {
@@ -778,6 +780,7 @@ export interface IOneMessageJson {
         nickname: string;
         avatars: AvatarJson;
         id: number;
+        roles: Role[]
     } | null;
 }
 
