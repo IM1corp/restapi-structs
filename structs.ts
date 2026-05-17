@@ -1,3 +1,5 @@
+import {commentToJson} from "../utils/database/structs";
+
 export type IFriendStatus =
     | "friends"
     | "requests"
@@ -25,6 +27,7 @@ export type IMessageHistoryJson = {
     avatars: AvatarJson;
     new_text?: string;
     old_text?: string;
+    roles: Role[]
     date: number;
     nickname: string;
     user_id: number;
@@ -64,6 +67,7 @@ export type ICommentHistoryJson = {
     change_type: "add" | "edit" | "delete" | "ban" | "restore";
     new_text?: string;
     old_text?: string;
+    roles: Role[]
     date: number;
     user_id: number;
     avatars: AvatarJson;
@@ -353,6 +357,51 @@ export type ICollectionPreview = Omit<ICollectionJson, "animes" | "likes"> & {
 export type ICollectionMainJson = Omit<ICollectionJson, "animes"> & {
     poster_previews: PosterJson[];
 };
+
+export interface ModerCategoriesJson {
+    harassment: number,
+    harassment_threatening: number,
+    hate: number,
+    hate_threatening: number,
+    self_harm: number,
+    self_harm_instructions: number,
+    self_harm_intent: number
+    sexual: number
+    sexual_minors: number
+    illicit: number
+    illicit_violent: number
+    violence: number
+    violence_graphic: number
+}
+
+export interface FlaggedCommentJson {
+    comment: ICommentJson,
+    flag_id: number
+    categories: ModerCategoriesJson
+    user: IUserJsonNicknameAndAva
+}
+
+export interface FlaggedAvatarJson {
+    user: IUserJsonNicknameAndAva
+    flag_id: number
+    categories: ModerCategoriesJson;
+}
+
+export interface FlaggedBannerJson {
+    banners: BannerJson;
+    flag_id: number;
+    user: IUserJsonNicknameAndAva
+    categories: ModerCategoriesJson;
+}
+
+export interface FlaggedMessageJson {
+    message: IOneMessageJson
+    flag_id: number
+    user: IUserJsonNicknameAndAva
+    categories: ModerCategoriesJson
+}
+
+export type ModerationStatus = 'pending' | 'approved' | 'flagged';
 
 export interface IProfileJson extends IUserJson {
     notifications: {
