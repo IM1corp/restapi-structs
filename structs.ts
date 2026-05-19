@@ -1,5 +1,3 @@
-import {commentToJson} from "../utils/database/structs";
-
 export type IFriendStatus =
     | "friends"
     | "requests"
@@ -505,9 +503,6 @@ export interface IAnimeJson {
     description: string;
 }
 
-export type IDeletedCommentJson = any;
-export type IMessageHistoryJson = any;
-export type ICommentHistoryJson = any;
 
 export interface IAnimeJsonSub extends IAnimeJson {
     sub: {
