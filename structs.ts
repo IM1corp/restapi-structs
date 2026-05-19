@@ -299,6 +299,7 @@ export interface IUserJson {
     id: number;
     ids: OtherIdsJson;
     banned: boolean;
+    email?: string;
     register_date: number;
     roles: Role[];
     bdate: number;
@@ -503,9 +504,11 @@ export interface IAnimeJson {
     title: string;
     description: string;
 }
+
 export type IDeletedCommentJson = any;
 export type IMessageHistoryJson = any;
 export type ICommentHistoryJson = any;
+
 export interface IAnimeJsonSub extends IAnimeJson {
     sub: {
         player: string;
@@ -905,6 +908,29 @@ export interface INotificationJson<T = unknown> {
     viewed: boolean;
 }
 
+export type IScope = "profile:read" |
+    "profile:modify" |
+    "lists:read" |
+    "lists:modify" |
+    "watches:add" |
+    "notifications:read" |
+    "messages:read" |
+    "messages:send" |
+    "feed:read" |
+    "comments:write" |
+    "comments:vote" |
+    "reviews:write" |
+    "reviews:vote" |
+    "posts:write" |
+    "posts:vote" |
+    "collections:write" |
+    "collections:vote" |
+    "edits:write" |
+    "edits:vote" |
+    "bloggers:subscribe" |
+    "video:subscribe" |
+    "friends:read" |
+    "friends:write";
 export type NotificationTypeNew =
     | "comment"
     | "review"
