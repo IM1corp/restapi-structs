@@ -1,4 +1,5 @@
-import {commentToJson} from "../utils/database/structs";
+import {ClaimStatus, commentToJson} from "../utils/database/structs";
+import {IAnimeEdit} from "../utils/database/connectors/edits";
 
 export type IFriendStatus =
     | "friends"
@@ -112,7 +113,7 @@ export interface SkipTimeJson {
 export interface IOneVideoJson {
     video_id: number;
     number: string;
-
+    author?: IUserJsonNicknameAndAva;
     iframe_url: string;
     data: {
         player: string;
@@ -231,6 +232,30 @@ export interface ICommentJson {
         title?: string;
         url?: string;
     };
+}
+
+export type ClaimableJson = ICommentJson |
+    IReviewJson |
+    IPostJsonSmall |
+    IUserJson |
+    ICollectionMainJson |
+    IOneVideoJson |
+    IOneMessageJson |
+    IEditAnimeJson
+
+export interface ClaimJson {
+    claim_id: number;
+    from_user: IUserJsonNicknameAndAva
+    user_comment: string;
+    open_date: number;
+    reason: string;
+    reason_code: string
+    content_id: number;
+    status: ClaimStatus;
+    closed_by_user?: IUserJsonNicknameAndAva
+    moderator_comment?: string;
+    closed_date?: number;
+    content: ClaimableJson
 }
 
 export interface ICommentJsonComplaint extends ICommentJson {
@@ -400,6 +425,8 @@ export interface FlaggedMessageJson {
     user: IUserJsonNicknameAndAva
     categories: ModerCategoriesJson
 }
+
+export type FlaggableJson = FlaggedBannerJson | FlaggedCommentJson | FlaggedAvatarJson | FlaggedMessageJson;
 
 export type ModerationStatus = 'pending' | 'approved' | 'flagged';
 
@@ -619,6 +646,7 @@ export type IEditAnimeJson = Partial<IAnimeJson> & {
     alloha_episodes?: string;
     alloha_season?: number;
     alloha_worldart?: number;
+    author: IUserJsonNicknameAndAva;
 };
 
 export interface IListStatus {
@@ -971,6 +999,7 @@ export interface IReviewJson {
     review_id: number;
     update_date: number;
     create_date: number;
+    text_preview: string;
 
     anime_id: number;
     type: "approved" | "waiting" | "declined";
@@ -1051,6 +1080,7 @@ export interface IUserJsonNicknameAndAva {
     id: number;
     nickname: string;
     avatars: AvatarJson;
+    roles?: Role[]
 }
 
 export type IPasskeyJson = {
