@@ -1,6 +1,5 @@
 import {ClaimStatus, commentToJson} from "../utils/database/structs";
 import {IAnimeEdit} from "../utils/database/connectors/edits";
-
 export type IFriendStatus =
     | "friends"
     | "requests"
@@ -102,6 +101,36 @@ export type Role =
     | 'newser'
     | 'coder'
     | 'coderHead';
+
+export type AccessTokenScope =
+    | 'profile:read'
+    | 'profile:write'
+    | 'account:security'
+    | 'notifications:read'
+    | 'notifications:write'
+    | 'library:read'
+    | 'library:write'
+    | 'social:read'
+    | 'social:write'
+    | 'messages:read'
+    | 'messages:write'
+    | 'comments:write'
+    | 'votes:write'
+    | 'reviews:write'
+    | 'posts:write'
+    | 'collections:write'
+    | 'uploads:write'
+    | 'apps:read'
+    | 'apps:write'
+    | 'edits:read'
+    | 'edits:write'
+    | 'moderation:read'
+    | 'moderation:write'
+    | 'users:moderate'
+    | 'users:roles'
+    | 'ipgroups:read'
+    | 'ipgroups:write'
+    | 'blogger-videos:write';
 
 // export
 
@@ -210,6 +239,7 @@ export interface IAnimeFavoriteJson extends Omit<IAnimeJson, "description"> {
     };
     views: number;
     season: number;
+    // sub
 }
 
 export interface ICommentJson {
@@ -293,6 +323,7 @@ export interface IUserJson {
     id: number;
     ids: OtherIdsJson;
     banned: boolean;
+    email?: string;
     register_date: number;
     roles: Role[];
     bdate: number;
@@ -360,6 +391,7 @@ export type IUserJsonFull = IUserJson & {
         0: 123;
         5: 123;
     };
+    email?: string;
 };
 
 export interface ICollectionJson {
@@ -473,7 +505,7 @@ export interface VideoBodyJson {
         small: string;
         big: string;
     };
-    language?: AcceptedLanguageType;
+    // language?: AcceptedLanguageType;
 }
 
 export interface VideoAnimeBodyJson {
@@ -497,6 +529,15 @@ export interface IAnimeJson {
     poster: PosterJson;
     title: string;
     description: string;
+}
+
+
+export interface IAnimeJsonSub extends IAnimeJson {
+    sub: {
+        player: string;
+        dubbing: string;
+        player_id: number;
+    };
 }
 
 export interface IScheduleAnimeJson extends IAnimeJson {
@@ -587,7 +628,9 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
     reviews_count: number;
     other_titles: string[];
     posts_count: number;
+    lists_count: number;
     partner_videos_count: number;
+    trailers_count: number;
     rating?: {
         counters: number;
         average: number;
@@ -784,7 +827,7 @@ export interface IBanJson {
         id: number;
         nickname: string;
         avatars: AvatarJson;
-        roles: string;
+        roles: Role[];
     };
     user: IUserJson;
     ban: {
@@ -798,6 +841,7 @@ export interface IBanJson {
 
 export interface IOneMessageDialogJson {
     last_message: string;
+    last_message_deleted: boolean;
     roles: Role[];
     unread_count: number;
     nickname: string;
@@ -812,6 +856,7 @@ export interface IMessageHistory {
     avatars: AvatarJson;
     new_text: string | undefined;
     nickname: string;
+    roles: Role[];
     date: number;
     old_text: string;
     user_id: number;
@@ -826,12 +871,14 @@ export interface IClaimedMessageJson {
     is_closed: boolean;
     avatars: AvatarJson;
     nickname: string;
+    roles: Role[];
     message: {
         text: string;
         is_chat: boolean;
         owner: {
             nickname: string;
             id: number;
+            roles: Role[];
         };
     };
     status_complaints: MessageStatusComplaints;
@@ -859,41 +906,10 @@ export interface IOneMessageJson {
         nickname: string;
         avatars: AvatarJson;
         id: number;
+        roles: Role[]
     } | null;
 }
 
-export interface IMessageChangeBase {
-    NickName: string;
-    Date: Date;
-    OldText: string;
-    UserId: number;
-    AvaVersion: number;
-}
-
-export interface IEditionWrite extends IMessageChangeBase {
-    NewText: string;
-}
-
-export interface IDeletionWrite extends IMessageChangeBase {
-    Deleted: boolean;
-}
-
-export interface IClaimedMessages {
-    MessageComplaintsId: number;
-    MessageId: number;
-    UserId: number;
-    Reason: number;
-    DateComplaints: Date;
-    IsClosed: boolean;
-    AvaVersion: number;
-    NickName: string;
-    Message: string;
-    IsChat: boolean;
-    MessageOwnerNickName: string;
-    MessageOwnerUserId: number;
-    StatusComplaints: MessageStatusComplaints;
-    IsLast: boolean;
-}
 
 export enum MessageStatusComplaints {
     Add = 0,
@@ -916,6 +932,29 @@ export interface INotificationJson<T = unknown> {
     viewed: boolean;
 }
 
+export type IScope = "profile:read" |
+    "profile:modify" |
+    "lists:read" |
+    "lists:modify" |
+    "watches:add" |
+    "notifications:read" |
+    "messages:read" |
+    "messages:send" |
+    "feed:read" |
+    "comments:write" |
+    "comments:vote" |
+    "reviews:write" |
+    "reviews:vote" |
+    "posts:write" |
+    "posts:vote" |
+    "collections:write" |
+    "collections:vote" |
+    "edits:write" |
+    "edits:vote" |
+    "bloggers:subscribe" |
+    "video:subscribe" |
+    "friends:read" |
+    "friends:write";
 export type NotificationTypeNew =
     | "comment"
     | "review"
@@ -955,6 +994,7 @@ export interface IBloggerVideoAnimeJson {
         avatars: AvatarJson;
         nickname: string;
         id: number;
+        roles: Role[];
     };
     title: string;
     descriptions: {

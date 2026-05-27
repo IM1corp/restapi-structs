@@ -1,4 +1,4 @@
-import {
+import type {
     IBloggerJson,
     // IBloggerVideoAnimeJson,
     IBloggerVideoFullJson,
@@ -11,7 +11,7 @@ import {
     IRoomJson,
     IUserJsonFull,
     IUserWatch,
-} from "./database";
+} from "./structs";
 
 export type SubscribableObjectType =
     | "blogger"
