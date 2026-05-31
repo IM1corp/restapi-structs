@@ -1,5 +1,5 @@
-import {ClaimStatus, commentToJson} from "../utils/database/structs";
-import {IAnimeEdit} from "../utils/database/connectors/edits";
+
+export type ClaimStatus = unknown;
 export type IFriendStatus =
     | "friends"
     | "requests"
