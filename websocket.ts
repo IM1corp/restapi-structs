@@ -230,6 +230,7 @@ export interface WatchVideoEvent{
     video_id: number;
     time: number;
     watched_times: number[];
+    duration?: number;
 }
 
 export type RoomEvent =
