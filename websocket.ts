@@ -225,6 +225,12 @@ export interface UnsubscribeGlobal {
     objectId: number | string;
     key: string;
 }
+export interface WatchVideoEvent{
+    event: "watch-video";
+    video_id: number;
+    time: number;
+    watched_times: number[];
+}
 
 export type RoomEvent =
     | {
@@ -259,6 +265,7 @@ export type WebSocketEvents = {
     "read-messages": ReadMessage;
     "subscribe-events": { event: "subscribe-events" };
     "unsubscribe-events": { event: "unsubscribe-events" };
+    "watch-video": WatchVideoEvent;
     ping: { event: "ping" };
     room: {
         event: "room";
