@@ -19,7 +19,8 @@ export type ICommentable =
     | "review"
     | "user"
     | "blogvideo"
-    | "collection";
+    | "collection"
+    | "design";
 type AcceptedLanguageType = "ru" | "en" | "uk";
 
 export type IMessageHistoryJson = {
@@ -31,6 +32,35 @@ export type IMessageHistoryJson = {
     date: number;
     nickname: string;
     user_id: number;
+}
+
+export interface IDesignJsonList {
+    design_info: {
+        id: number;
+        title: string;
+        description: string;
+        background_url: string;
+        install_count: number;
+        is_fav?: boolean;
+        rating: number;
+        timestamps: {
+            created_at: number;
+            updated_at?: number;
+            deleted_at?: number;
+        };
+        votes: {
+            likes: number;
+            dislikes: number;
+            vote: 0 | 1 | -1;
+        }
+    };
+    author: IUserJsonNicknameAndAva;
+    data: Record<string, string>
+    
+}
+
+export interface IDesignJsonOne extends IDesignJsonList {
+    comments: ICommentJson[];
 }
 
 export type IDeletedCommentJson = {
@@ -961,6 +991,7 @@ export type NotificationTypeNew =
     | "blogvideo"
     | "post"
     | "collection"
+    | "design"
     | "friend"
     | "viewing_order_update"
     | "anime_episode";
