@@ -19,8 +19,7 @@ export type ICommentable =
     | "review"
     | "user"
     | "blogvideo"
-    | "collection"
-    | "design";
+    | "collection";
 type AcceptedLanguageType = "ru" | "en" | "uk";
 
 export type IMessageHistoryJson = {
