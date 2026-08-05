@@ -275,14 +275,14 @@ export type ClaimableJson = ICommentJson |
 
 export interface ClaimJson {
     claim_id: number;
-    from_user: IUserJsonNicknameAndAva
+    from_user: IUserJsonNicknameAndAva&{comment: string}
     user_comment: string;
     open_date: number;
     reason: string;
     reason_code: string
     content_id: number;
     status: ClaimStatus;
-    closed_by_user?: IUserJsonNicknameAndAva
+    closed_by_user?: IUserJsonNicknameAndAva&{comment: string}
     moderator_comment?: string;
     closed_date?: number;
     content: ClaimableJson
@@ -689,7 +689,7 @@ export type IEditAnimeJson = Partial<IAnimeJson> & {
     alloha_episodes?: string;
     alloha_season?: number;
     alloha_worldart?: number;
-    author: IUserJsonNicknameAndAva;
+    author?: IUserJsonNicknameAndAva;
 };
 
 export interface IListStatus {
