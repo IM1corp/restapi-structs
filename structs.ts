@@ -59,7 +59,6 @@ export interface IDesignJsonList {
 }
 
 export interface IDesignJsonOne extends IDesignJsonList {
-    comments: ICommentJson[];
 }
 
 export type IDeletedCommentJson = {
@@ -656,6 +655,7 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
     comments_count: number;
     reviews_count: number;
     other_titles: string[];
+    parent_comments_count: number;
     posts_count: number;
     lists_count: number;
     partner_videos_count: number;
