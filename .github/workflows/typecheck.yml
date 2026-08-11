@@ -1,0 +1,26 @@
+name: Typecheck
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+concurrency:
+  group: typecheck-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tsc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # Keep in sync with the typescript version in yummy-back-old/package.json
+      - run: npm install -g typescript@4.9.5
+
+      - run: tsc --noEmit -p .
