@@ -33,6 +33,34 @@ export type IMessageHistoryJson = {
     user_id: number;
 }
 
+export interface IDesignJsonList {
+    design_info: {
+        id: number;
+        title: string;
+        description: string;
+        background_url: string;
+        install_count: number;
+        is_fav?: boolean;
+        rating: number;
+        timestamps: {
+            created_at: number;
+            updated_at?: number;
+            deleted_at?: number;
+        };
+        votes: {
+            likes: number;
+            dislikes: number;
+            vote: 0 | 1 | -1;
+        }
+    };
+    author: IUserJsonNicknameAndAva;
+    data: Record<string, string>
+    
+}
+
+export interface IDesignJsonOne extends IDesignJsonList {
+}
+
 export type IDeletedCommentJson = {
     change_type: "delete" | "restore" | "add" | "edit" | "ban";
     reason: number;
@@ -627,6 +655,7 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
     comments_count: number;
     reviews_count: number;
     other_titles: string[];
+    parent_comments_count: number;
     posts_count: number;
     lists_count: number;
     partner_videos_count: number;
@@ -961,6 +990,7 @@ export type NotificationTypeNew =
     | "blogvideo"
     | "post"
     | "collection"
+    | "design"
     | "friend"
     | "viewing_order_update"
     | "anime_episode";
