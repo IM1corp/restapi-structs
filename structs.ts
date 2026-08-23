@@ -1,3 +1,4 @@
+import { userToJsonLight } from "../utils/database/structs";
 
 export type ClaimStatus = unknown;
 export type IFriendStatus =
@@ -55,7 +56,7 @@ export interface IDesignJsonList {
     };
     author: IUserJsonNicknameAndAva;
     data: Record<string, string>
-    
+
 }
 
 export interface IDesignJsonOne extends IDesignJsonList {
@@ -276,6 +277,7 @@ export interface ICommentJson {
     deleted_at: number;
     name: string;
     id: number;
+    object_id: number;
     time: number;
     likes: number;
     dislikes: number;
@@ -630,6 +632,30 @@ export interface IMessageDeletionWriteJson {
     date: number;
     deleted: boolean;
     reason_deletion: boolean;
+}
+
+export interface IPageJson {
+    id: number;
+    type: string;
+    html: string;
+}
+
+export interface IPageChangeJson {
+    id: number;
+    change_date: number;
+    old_html: string
+    new_html: string;
+    user: IUserJsonNicknameAndAva;
+}
+
+export interface IpGroupJson {
+    id: number;
+    ip_v4?: string;
+    ip_v6?: string;
+    asn?: number;
+    tag: string;
+    country: string;
+    users_count: number;
 }
 
 export interface IScreenShotJson {
