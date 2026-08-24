@@ -1,5 +1,3 @@
-import { userToJsonLight } from "../utils/database/structs";
-
 export type ClaimStatus = unknown;
 export type IFriendStatus =
     | "friends"
