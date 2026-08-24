@@ -1185,14 +1185,6 @@ export interface IPageJson {
     html: string;
 }
 
-export interface IPageChangeJson {
-    id: number;
-    change_date: number;
-    old_html?: string;
-    new_html: string;
-    user: IUserJsonNicknameAndAva;
-}
-
 export type IPasskeyJson = {
     credential_id: string;
     authenticator_type: "platform" | "cross-platform";
