@@ -303,14 +303,17 @@ export type ClaimableJson = ICommentJson |
 
 export interface ClaimJson {
     claim_id: number;
-    from_user: IUserJsonNicknameAndAva&{comment: string}
+    from_user: IUserJsonNicknameAndAva
     user_comment: string;
     open_date: number;
-    reason: string;
-    reason_code: string
+    reasons: {
+        titles: string[];
+        codes: string[];
+    };
     content_id: number;
     status: ClaimStatus;
-    closed_by_user?: IUserJsonNicknameAndAva&{comment: string}
+    closed_by_user?: IUserJsonNicknameAndAva;
+    content_type: string;
     moderator_comment?: string;
     closed_date?: number;
     content: ClaimableJson
@@ -680,6 +683,7 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
     reviews_count: number;
     other_titles: string[];
     parent_comments_count: number;
+    collections_count: number;
     posts_count: number;
     lists_count: number;
     partner_videos_count: number;
@@ -1175,12 +1179,6 @@ export interface IUserJsonNicknameAndAva {
     nickname: string;
     avatars: AvatarJson;
     roles?: Role[]
-}
-
-export interface IPageJson {
-    id: number;
-    type: string;
-    html: string;
 }
 
 export type IPasskeyJson = {
