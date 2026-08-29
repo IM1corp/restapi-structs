@@ -307,9 +307,9 @@ export interface ClaimJson {
     user_comment: string;
     open_date: number;
     reasons: {
-        titles: string[];
-        codes: string[];
-    };
+        title: string;
+        code: string;
+    }[];
     content_id: number;
     status: ClaimStatus;
     closed_by_user?: IUserJsonNicknameAndAva;
