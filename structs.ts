@@ -736,17 +736,46 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
     duration: number;
 }
 
-export type IEditAnimeJson = Partial<IAnimeJson> & {
+export interface IReasonJson {
+    id: number;
+    title: string;
+    code: string;
+    duration: number;
+}
+
+export type IEditAnimeDataJson = Omit<
+    Partial<IOneAnimeJson>,
+    "episodes" | "remote_ids"
+> & {
+    /** Only the sub-fields touched by the edit are present. */
+    episodes?: Partial<IOneAnimeJson["episodes"]>;
+    /** Only the sub-fields touched by the edit are present. */
+    remote_ids?: Partial<IOneAnimeJson["remote_ids"]>;
     title_ru?: string;
     description_ru?: string;
     description_en?: string;
     description_uk?: string;
     title_en?: string;
+    studios?: IStudioJson[];
+    creators?: ICreatorJson[];
     title_uk?: string;
     alloha_episodes?: string;
     alloha_season?: number;
     alloha_worldart?: number;
+};
+
+/**
+ * Anime edit request as two symmetric data sets.
+ *
+ * `new` - values proposed by the edit author.
+ * `old` - values the anime had at the moment the edit was applied;
+ * empty while the edit is still pending.
+ */
+export type IEditAnimeJson = {
+    anime_id: number;
     author?: IUserJsonNicknameAndAva;
+    new: IEditAnimeDataJson;
+    old: IEditAnimeDataJson;
 };
 
 export interface IListStatus {
