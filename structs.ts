@@ -741,7 +741,7 @@ export interface IDubberClubJson {
     title: string;
     description: string;
     image: string;
-    is_subtitle: boolean;
+    type: 'sub' | 'dub';
 }
 
 export interface IDubberJson {
