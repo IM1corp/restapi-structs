@@ -742,13 +742,16 @@ export interface IDubberClubJson {
     description: string;
     image: string;
     type: 'sub' | 'dub';
+    media?: IOneAnimeSmallJson[];
 }
 
 export interface IDubberJson {
     id: number;
     title: string;
-    profile_id: number | null;
+    profile: IUserJsonNicknameAndAva;
+    image: string;
     media_count: number;
+    media?: IOneAnimeSmallJson[];
 }
 
 export interface IReasonJson {
