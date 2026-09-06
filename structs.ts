@@ -748,7 +748,7 @@ export interface IDubberJson {
     id: number;
     title: string;
     profile_id: number | null;
-    animes_count: number;
+    media_count: number;
 }
 
 export interface IReasonJson {
