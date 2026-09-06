@@ -736,6 +736,21 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
     duration: number;
 }
 
+export interface IDubberClubJson {
+    id: number;
+    title: string;
+    description: string;
+    image: string;
+    is_subtitle: boolean;
+}
+
+export interface IDubberJson {
+    id: number;
+    title: string;
+    profile_id: number | null;
+    animes_count: number;
+}
+
 export interface IReasonJson {
     id: number;
     title: string;
