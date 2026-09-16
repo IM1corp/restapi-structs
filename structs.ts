@@ -18,6 +18,7 @@ export type ICommentable =
     | "review"
     | "user"
     | "blogvideo"
+    | "design"
     | "collection";
 type AcceptedLanguageType = "ru" | "en" | "uk";
 
@@ -37,7 +38,6 @@ export interface IDesignJsonList {
         id: number;
         title: string;
         description: string;
-        background_url: string;
         install_count: number;
         is_fav?: boolean;
         rating: number;
@@ -299,7 +299,7 @@ export type ClaimableJson = ICommentJson |
     ICollectionMainJson |
     IOneVideoJson |
     IOneMessageJson |
-    IEditAnimeJson
+    IContentEditJson
 
 export interface ClaimJson {
     claim_id: number;
@@ -448,18 +448,11 @@ export type ICollectionMainJson = Omit<ICollectionJson, "animes"> & {
 
 export interface ModerCategoriesJson {
     harassment: number,
-    harassment_threatening: number,
     hate: number,
-    hate_threatening: number,
     self_harm: number,
-    self_harm_instructions: number,
-    self_harm_intent: number
     sexual: number
-    sexual_minors: number
     illicit: number
-    illicit_violent: number
     violence: number
-    violence_graphic: number
 }
 
 export interface FlaggedCommentJson {
@@ -560,6 +553,7 @@ export interface IAnimeJson {
     poster: PosterJson;
     title: string;
     description: string;
+    created_at: number;
 }
 
 
@@ -675,6 +669,8 @@ export interface IDirectorJson {
     title: string;
     id: number;
     title_jp: string;
+    created_at: number;
+    deleted_at: number;
 }
 
 export interface IOneAnimeJson extends IOneAnimeSmallJson {
@@ -743,15 +739,20 @@ export interface IDubberClubJson {
     image: string;
     type: 'sub' | 'dub';
     media?: IOneAnimeSmallJson[];
+    created_at: number;
+    deleted_at: number;
 }
 
 export interface IDubberJson {
     id: number;
     title: string;
-    profile: IUserJsonNicknameAndAva;
+    profile?: IUserJsonNicknameAndAva;
     image: string;
     media_count: number;
     media?: IOneAnimeSmallJson[];
+    club_id?: number;
+    created_at: number;
+    deleted_at: number;
 }
 
 export interface IReasonJson {
@@ -759,6 +760,16 @@ export interface IReasonJson {
     title: string;
     code: string;
     duration: number;
+}
+
+export interface IEditDubStudioGroupJson {
+    dub_studio_id: number;
+    title?: string;
+    description?: string;
+    image?: string;
+    type?: 'sub' | 'dub' | 'voice';
+    deleted_at?: number;
+    dubbers: IDubberJson[];
 }
 
 export type IEditAnimeDataJson = Omit<
@@ -775,11 +786,79 @@ export type IEditAnimeDataJson = Omit<
     description_uk?: string;
     title_en?: string;
     studios?: IStudioJson[];
+    /** Each dubber nests under the studio it belongs to, mirroring the `dub_studios` shape accepted by PATCH /anime/:id. */
+    dub_studios?: IEditDubStudioGroupJson[];
     creators?: ICreatorJson[];
     title_uk?: string;
     alloha_episodes?: string;
     alloha_season?: number;
     alloha_worldart?: number;
+};
+
+export type EditContentTypeJson =
+    'media'
+    | 'studio'
+    | 'creator'
+    | 'tag'
+    | 'dub-studio'
+    | 'dubber';
+
+export type EditActionJson = 'create' | 'update' | 'delete';
+
+export type EditStatusJson = 'pending' | 'accepted' | 'rejected';
+
+export type IStudioEditDataJson = {
+    title?: string;
+    description?: string;
+    image?: string;
+};
+
+export type IDubStudioEditDataJson = {
+    title?: string;
+    description?: string;
+    image?: string;
+    type?: 'dub' | 'sub';
+};
+
+export type IDubberEditDataJson = {
+    title?: string;
+    image?: string;
+    profile_id?: number;
+    club_id?: number;
+};
+
+export type ICreatorEditDataJson = {
+    title?: string;
+};
+
+export type ITagEditDataJson = {
+    title?: string;
+};
+
+/** One side (`new`/`old`) of an edit, whatever content it belongs to. */
+export type IContentEditSideJson = IEditAnimeDataJson | IStudioEditDataJson | IDubStudioEditDataJson | IDubberEditDataJson | ICreatorEditDataJson | ITagEditDataJson;
+
+/**
+ * An edit request of any content type.
+ *
+ * `new` - values proposed by the edit author.
+ * `old` - values the content had at the moment the edit was applied; while it
+ * is still pending, the values the content holds right now.
+ */
+export type IContentEditJson = {
+    edit_id: number;
+    content_type: EditContentTypeJson;
+    content_id: number;
+    action: EditActionJson;
+    status: EditStatusJson;
+    /** How many separate things the edit changes. */
+    edits_count: number;
+    created_by?: IUserJsonNicknameAndAva;
+    created_at: number;
+    updated_by?: IUserJsonNicknameAndAva;
+    updated_at?: number;
+    new: IContentEditSideJson;
+    old: IContentEditSideJson;
 };
 
 /**
@@ -922,8 +1001,21 @@ export interface ICreatorJson extends IUrl {
     id: number;
 }
 
-export interface IStudioJson extends IUrl {
+export interface IStudioJson extends Omit<IUrl, 'url'> {
     id: number;
+    image: string;
+    description: string;
+    uri: string;
+    created_by?: IUserJsonNicknameAndAva;
+    created_at: number;
+    deleted_at: number;
+}
+
+export interface ITagJson {
+    id: number;
+    title: string;
+    created_at: number;
+    deleted_at: number;
 }
 
 export interface IBanJson {
