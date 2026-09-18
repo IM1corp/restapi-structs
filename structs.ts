@@ -47,6 +47,7 @@ export interface IDesignJsonList {
             deleted_at?: number;
         };
     };
+    comments_count: number;
     likes: {
         likes: number;
         dislikes: number;
