@@ -46,11 +46,11 @@ export interface IDesignJsonList {
             updated_at?: number;
             deleted_at?: number;
         };
-        votes: {
-            likes: number;
-            dislikes: number;
-            vote: 0 | 1 | -1;
-        }
+    };
+    likes: {
+        likes: number;
+        dislikes: number;
+        vote: 0 | 1 | -1;
     };
     author: IUserJsonNicknameAndAva;
     data: Record<string, string>

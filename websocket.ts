@@ -21,6 +21,7 @@ export type SubscribableObjectType =
     | "review"
     | "user"
     | "profile"
+    | "design"
     | "post";
 
 interface ClientEvent {
