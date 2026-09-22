@@ -59,6 +59,7 @@ export interface IDesignJsonList {
 }
 
 export interface IDesignJsonOne extends IDesignJsonList {
+    parent_comments_count: number;
 }
 
 export type IDeletedCommentJson = {
@@ -432,6 +433,7 @@ export interface ICollectionJson {
     description: string;
     owner: IUserJsonNicknameAndAva;
     create_date: number;
+    parent_comments_count: number;
     likes: ILikesJson;
     language: AcceptedLanguageType;
     animes: IOneAnimeSmallJson[];
@@ -1199,6 +1201,7 @@ export interface IBloggerVideoAnimeJson {
         small: string;
         big: string;
     };
+    parent_comments_count: number;
     id: number;
     category: VideoCategoryJson;
     comments_count: number;
@@ -1299,6 +1302,7 @@ export type IReviewJsonList = IReviewJson & {
 export type IReviewFullJson = Omit<IReviewJsonList, "text_preview"> & {
     text_html: string;
     reviews_count: number;
+    parent_comments_count: number;
 };
 
 export interface IOneAppJsonSmall {
@@ -1343,6 +1347,7 @@ export interface IPostJson extends Omit<IPostJsonSmall, "content_preview"> {
     edited_at: number;
     content: string;
     comments: number;
+    parent_comments_count: number;
     views: number;
     likes: ILikesJson;
     animes: IOneAnimeJson[];
@@ -1371,6 +1376,7 @@ export interface IBloggerJson extends IUserJsonNicknameAndAva {
     subscriptions: number;
     is_subscribed: boolean;
     videos_count: number;
+    about: string;
 
     categories: VideoCategoryJson[];
 }
