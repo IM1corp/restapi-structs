@@ -1377,6 +1377,7 @@ export interface IBloggerJson extends IUserJsonNicknameAndAva {
     is_subscribed: boolean;
     videos_count: number;
     about: string;
+    subscribed_at?: number;
 
     categories: VideoCategoryJson[];
 }
