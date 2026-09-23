@@ -1168,6 +1168,7 @@ export type NotificationType =
     | "news"
     | "edit"
     | "message"
+    | "design"
     | "comment"
     | "animeupdate"
     | "review"
