@@ -685,7 +685,7 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
     collections_count: number;
     posts_count: number;
     lists_count: number;
-    partner_videos_count: number;
+    blogger_videos_count: number;
     trailers_count: number;
     rating?: {
         counters: number;
@@ -1118,7 +1118,7 @@ export enum MessageStatusComplaints {
     Argue = 4,
 }
 
-export interface INotificationJson<T = unknown> {
+export interface INotificationJson{
     id: number;
     text_html: string;
     title_html: string;
@@ -1126,7 +1126,6 @@ export interface INotificationJson<T = unknown> {
     click_uri: string;
     type: string;
     sub_type: string;
-    data: T;
     object_id: number;
     viewed: boolean;
 }
