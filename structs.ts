@@ -1382,6 +1382,8 @@ export interface IBloggerJson extends IUserJsonNicknameAndAva {
     categories: VideoCategoryJson[];
 }
 
+export type IBloggerJsonList = Omit<IBloggerJson, 'categories'>
+
 export interface OneGenre {
     title: string;
     href: string;
