@@ -1164,6 +1164,7 @@ export type NotificationTypeNew =
     | "design"
     | "friend"
     | "viewing_order_update"
+    | "media"
     | "anime_episode";
 export type NotificationType =
     | "news"
@@ -1174,6 +1175,7 @@ export type NotificationType =
     | "animeupdate"
     | "review"
     | "friend"
+    | "media"
     | "viewingorderupdate";
 
 export interface INotificationFULL extends INotificationJson {
