@@ -1,3 +1,4 @@
+
 export type ClaimStatus = unknown;
 export type IFriendStatus =
     | "friends"
@@ -21,6 +22,22 @@ export type ICommentable =
     | "design"
     | "collection";
 type AcceptedLanguageType = "ru" | "en" | "uk";
+
+export interface IFlaggedContentJson {
+    flag_id: number;
+    object: {
+        id: number;
+        type: 'comment' | 'message' | 'banner' | 'avatar';
+        text?: string;
+        banners?: BannerJson;
+        created_at?: number;
+        author: IUserJsonNicknameAndAva;
+    };
+    reasons: {
+        code: string;
+        title: string;
+    }[];
+}
 
 export type IMessageHistoryJson = {
     change_type: "delete" | "restore" | "add" | "edit";
@@ -251,24 +268,29 @@ export interface PosterJson {
     mega: string;
 }
 
-export interface IAnimeFavoriteJson extends Omit<IAnimeJson, "description"> {
+export interface IAnimeFavoriteJson extends Pick<IAnimeJson, "anime_id" | "anime_url" | "poster" | "title"> {
     type: IAnimeType;
     date: number;
     year: number;
-    user: IUserAnimeInfo;
+    user?: IUserAnimeInfo;
     genres: IGenreJson[];
     rating: number;
     rating_counters: number;
     anime_status: IAnimeStatus;
     next_episode?: number;
-    remote_ids: RemoteIdsJson;
+    remote_ids: Pick<RemoteIdsJson, "worldart_id" | "shikimori_id" | "myanimelist_id">;
     top: {
         global: number;
-        category: number;
     };
     views: number;
     season: number;
-    // sub
+    subs: IAnimeSubJson[];
+}
+
+export interface IAnimeSubJson {
+    player: string;
+    dubbing: string;
+    player_id: number;
 }
 
 export interface ICommentJson {
@@ -561,11 +583,7 @@ export interface IAnimeJson {
 
 
 export interface IAnimeJsonSub extends IAnimeJson {
-    sub: {
-        player: string;
-        dubbing: string;
-        player_id: number;
-    };
+    sub: IAnimeSubJson;
 }
 
 export interface IScheduleAnimeJson extends IAnimeJson {
@@ -883,7 +901,7 @@ export type IEditAnimeJson = {
 export interface IListStatus {
     title: string;
     href: string;
-    id: 0 | 1 | 2 | 3 | 5 | 4;
+    id: 0 | 1 | 2 | 3 | 5 | 4 | 6;
 }
 
 export interface IAnimeVideoPreview extends IAnimeJson {
@@ -917,6 +935,8 @@ export interface IUserAnimeInfo {
     rating: number;
     list: {
         is_fav: boolean;
+        /** Is user subscribed to any video (dubbing/player) of this anime */
+        is_sub?: boolean;
         // value:  0|1|2|3|-1|5;
         list: IListStatus | null;
     };
