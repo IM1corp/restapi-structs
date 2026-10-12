@@ -272,7 +272,7 @@ export interface IAnimeFavoriteJson extends Pick<IAnimeJson, "anime_id" | "anime
     type: IAnimeType;
     date: number;
     year: number;
-    user?: IUserAnimeInfo;
+    user: IUserAnimeInfo;
     genres: IGenreJson[];
     rating: number;
     rating_counters: number;
