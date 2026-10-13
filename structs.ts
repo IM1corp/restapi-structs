@@ -194,6 +194,11 @@ export interface IOneVideoJson {
         player: string;
         dubbing: string;
         player_id: number;
+        dubbing_id?: number;
+        type?: "voice" | "dub" | "sub";
+        voices_count?: number | null;
+        dub_studio?: { id: number; title: string; code: string };
+        dubbers?: { id: number; title: string }[];
     };
     date: number;
     index: number;
