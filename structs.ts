@@ -733,7 +733,7 @@ export interface IOneAnimeJson extends IOneAnimeSmallJson {
         anidub_id?: number;
     };
     creators: ICreatorJson[];
-    studios: IStudioJson[];
+    studios: IStudioJsonLight[];
     videos?: IOneVideoJson[];
     genres: IGenreJson[];
     viewing_order: IViewingOrderJson[];
@@ -1031,11 +1031,17 @@ export interface ICreatorJson extends IUrl {
     id: number;
 }
 
-export interface IStudioJson extends Omit<IUrl, 'url'> {
+export interface IStudioJsonLight {
     id: number;
+    title: string;
+    uri: string;
+    /** @deprecated Old website link (`/catalog/studio/{uri}`), use `uri` instead */
+    url: string;
+}
+
+export interface IStudioJson extends Omit<IStudioJsonLight, 'url'> {
     image: string;
     description: string;
-    uri: string;
     created_by?: IUserJsonNicknameAndAva;
     created_at: number;
     deleted_at: number;
